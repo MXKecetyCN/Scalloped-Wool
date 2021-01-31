@@ -1,4 +1,4 @@
-name: 笑谱直播版
+name: 笑谱标准版
 
 on:
     workflow_dispatch:
