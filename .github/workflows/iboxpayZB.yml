@@ -3,7 +3,7 @@ name: 笑谱直播版
 on:
     workflow_dispatch:
     schedule:
-        - cron: "*/30 * * * *"
+        - cron: "*/20 9-23 * * *"
     watch:
         types: [started]
     repository_dispatch:
