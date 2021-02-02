@@ -28,10 +28,15 @@ jobs:
         run: |
           npm install
       - name: '运行 【ceshi】'
-        if: env.BAIDU_COOKIE
         run: |
           node Scripts/huoshan.js
         env:
+          HSURL: ${{ secrets.HSURL }}
+          HSHEADER: ${{ secrets.HSHEADER }}		
+          HSBODY: ${{ secrets.HSBODY }}	
+          PLAYURL: ${{ secrets.PLAYURL }}        
+          PLAYHEADER: ${{ secrets.PLAYHEADER }}
+          PLAYBODY: ${{ secrets.PLAYBODY }}
           BAIDU_CASH: ${{ secrets.BAIDU_CASH }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
