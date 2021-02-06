@@ -68,3 +68,4 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 44 5 * * 6 bash /home/myid/jd/jd.sh jd_unbind
 45 23 * * * bash /home/myid/jd/jd.sh jd_unsubscribe
 41 9 * * * bash /home/myid/jd/jd.sh jx_sign
+41 9 * * * bash /home/myid/jd/jd.sh jx_sign2
