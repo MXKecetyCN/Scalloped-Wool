@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-## Author: Evine Deng
-## Source: https://github.com/EvineDeng/jd-base
-## Modified： 2021-01-22
-## Version： v3.6.1
-
 ## 文件路径、脚本网址、文件版本以及各种环境的判断
 ShellDir=${JD_DIR:-$(cd $(dirname $0); pwd)}
 [[ ${JD_DIR} ]] && ShellJd=jd || ShellJd=${ShellDir}/jd.sh
@@ -26,30 +21,39 @@ ContentNewTask=${ShellDir}/new_task
 ContentDropTask=${ShellDir}/drop_task
 SendCount=${ShellDir}/send_count
 isTermux=${ANDROID_RUNTIME_ROOT}${ANDROID_ROOT}
-WhichDep=$(grep "/jd-base" "${ShellDir}/.git/config")
 ScriptsURL=https://gitee.com/lxk0301/jd_scripts
-ShellURL=https://github.com/dockere/jd-base
+ShellURL=https://gitee.com/ekonoob/jd-base
 
-## 更新shell脚本
+## 更新crontab，gitee服务器同一时间限制5个链接，因此每个人更新代码必须错开时间，每次执行git_pull随机生成。
+## 每天次数随机，更新时间随机，更新秒数随机，至少6次，至多12次，大部分为8-10次，符合正态分布。
+function Update_Cron {
+  if [ -f ${ListCron} ]; then
+    RanMin=$((${RANDOM} % 60))
+    RanSleep=$((${RANDOM} % 56))
+    RanHourArray[0]=$((${RANDOM} % 3))
+    for ((i=1; i<14; i++)); do
+      j=$(($i - 1))
+      tmp=$((${RANDOM} % 3 + ${RanHourArray[j]} + 2))
+      [[ ${tmp} -lt 24 ]] && RanHourArray[i]=${tmp} || break
+    done
+    RanHour=${RanHourArray[0]}
+    for ((i=1; i<${#RanHourArray[*]}; i++)); do
+      RanHour="${RanHour},${RanHourArray[i]}"
+    done
+    perl -i -pe "s|.+(bash git_pull.+)|${RanMin} ${RanHour} \* \* \* sleep ${RanSleep} && \1|" ${ListCron}
+    crontab ${ListCron}
+  fi
+}
 function Git_PullShell {
   echo -e "更新shell脚本，原地址：${ShellURL}\n"
   cd ${ShellDir}
   git fetch --all
   ExitStatusShell=$?
-  git reset --hard origin/v3
-}
-
-## 更新crontab
-function Update_Cron {
-  if [ -f ${ListCron} ]; then
-    perl -i -pe "s|30 8-20/4(.+jd_nian\W*.*)|28 8-20/4,21\1|" ${ListCron} # 修改默认错误的cron
-    crontab ${ListCron}
-  fi
+  git reset --hard origin/master
 }
 
 ## 克隆scripts
 function Git_CloneScripts {
-  echo -e "克隆LXK9301脚本，原地址：${ScriptsURL}\n"
   git clone -b master ${ScriptsURL} ${ScriptsDir}
   ExitStatusScripts=$?
   echo
@@ -57,7 +61,6 @@ function Git_CloneScripts {
 
 ## 更新scripts
 function Git_PullScripts {
-  echo -e "更新LXK9301脚本，原地址：${ScriptsURL}\n"
   cd ${ScriptsDir}
   git fetch --all
   ExitStatusScripts=$?
@@ -77,7 +80,6 @@ function Count_UserSum {
 }
 
 ## 把config.sh中提供的所有账户的PIN附加在jd_joy_run.js中，让各账户相互进行宠汪汪赛跑助力
-## 你的账号将按Cookie顺序被优先助力，助力完成再助力我的账号和lxk0301大佬的账号
 function Change_JoyRunPins {
   j=${UserSum}
   PinALL=""
@@ -90,8 +92,6 @@ function Change_JoyRunPins {
     PinALL="${PinTempFormat},${PinALL}"
     let j--
   done
-  PinEvine="Evine,做一颗潇洒的蛋蛋,Evine007,jd_7bb2be8dbd65c,jd_6fae2af082798,jd_664ecc3b78945,277548856_m,米大眼老鼠,"
-  PinALL="${PinALL}${PinEvine}"
   perl -i -pe "{s|(let invite_pins = \[\")(.+\"\];?)|\1${PinALL}\2|; s|(let run_pins = \[\")(.+\"\];?)|\1${PinALL}\2|}" ${ScriptsDir}/jd_joy_run.js
 }
 
@@ -116,11 +116,11 @@ function Diff_Cron {
   if [ -f ${ListCron} ]; then
     if [ -n "${JD_DIR}" ]
     then
-      grep -E " j[drx]_\w+" ${ListCron} | perl -pe "s|.+ (j[drx]_\w+).*|\1|" | uniq | sort > ${ListTask}
+      grep -E " j[drx]_\w+" ${ListCron} | perl -pe "s|.+ (j[drx]_\w+).*|\1|" | sort -u > ${ListTask}
     else
-      grep "${ShellDir}/" ${ListCron} | grep -E " j[drx]_\w+" | perl -pe "s|.+ (j[drx]_\w+).*|\1|" | uniq | sort > ${ListTask}
+      grep "${ShellDir}/" ${ListCron} | grep -E " j[drx]_\w+" | perl -pe "s|.+ (j[drx]_\w+).*|\1|" | sort -u > ${ListTask}
     fi
-    cat ${ListCronLxk} | grep -E "j[drx]_\w+\.js" | perl -pe "s|.+(j[drx]_\w+)\.js.+|\1|" | sort > ${ListJs}
+    cat ${ListCronLxk} | grep -E "j[drx]_\w+\.js" | perl -pe "s|.+(j[drx]_\w+)\.js.+|\1|" | sort -u > ${ListJs}
     grep -vwf ${ListTask} ${ListJs} > ${ListJsAdd}
     grep -vwf ${ListJs} ${ListTask} > ${ListJsDrop}
   else
@@ -151,7 +151,7 @@ function Notify_Version {
   then
     if [ ! -f ${SendCount} ]; then
       echo -e "检测到配置文件config.sh.sample有更新\n\n更新日期: ${UpdateDate}\n当前版本: ${VerConf}\n新的版本: ${VerConfSample}\n更新内容: ${UpdateContent}\n如需使用新功能请对照config.sh.sample，将相关新参数手动增加到你自己的config.sh中，否则请无视本消息。\n" | tee ${ContentVersion}
-      echo -e "本消息只在该新版本配置文件更新当天发送一次，脚本地址：${ShellURL}" >> ${ContentVersion}
+      echo -e "本消息只在该新版本配置文件更新当天发送一次。" >> ${ContentVersion}
       cd ${ShellDir}
       node update.js
       if [ $? -eq 0 ]; then
@@ -229,7 +229,7 @@ function Output_ListJsDrop {
 }
 
 ## 自动删除失效的脚本与定时任务，需要5个条件：1.AutoDelCron 设置为 true；2.正常更新js脚本，没有报错；3.js-drop.list不为空；4.crontab.list存在并且不为空；5.已经正常运行过npm install
-## 检测文件：LXK9301/jd_scripts 仓库中的 docker/crontab_list.sh，和 shylocks/Loon 仓库中的 docker/crontab_list.sh
+## 检测文件：LXK9301/jd_scripts 仓库中的 docker/crontab_list.sh
 ## 如果检测到某个定时任务在上述检测文件中已删除，那么在本地也删除对应定时任务
 function Del_Cron {
   if [ "${AutoDelCron}" = "true" ] && [ -s ${ListJsDrop} ] && [ -s ${ListCron} ] && [ -d ${ScriptsDir}/node_modules ]; then
@@ -246,14 +246,14 @@ function Del_Cron {
     crontab -l
     echo -e "\n--------------------------------------------------------------\n"
     if [ -d ${ScriptsDir}/node_modules ]; then
-      echo -e "jd-base脚本成功删除失效的定时任务：\n\n${JsDrop}\n\n脚本地址：${ShellURL}" > ${ContentDropTask}
+      echo -e "删除失效的定时任务：\n\n${JsDrop}" > ${ContentDropTask}
       Notify_DropTask
     fi
   fi
 }
 
 ## 自动增加新的定时任务，需要5个条件：1.AutoAddCron 设置为 true；2.正常更新js脚本，没有报错；3.js-add.list不为空；4.crontab.list存在并且不为空；5.已经正常运行过npm install
-## 检测文件：LXK9301/jd_scripts 仓库中的 docker/crontab_list.sh，和 shylocks/Loon 仓库中的 docker/crontab_list.sh
+## 检测文件：LXK9301/jd_scripts 仓库中的 docker/crontab_list.sh
 ## 如果检测到检测文件中增加新的定时任务，那么在本地也增加
 ## 本功能生效时，会自动从检测文件新增加的任务中读取时间，该时间为北京时间
 function Add_Cron {
@@ -280,13 +280,13 @@ function Add_Cron {
       crontab -l
       echo -e "\n--------------------------------------------------------------\n"
       if [ -d ${ScriptsDir}/node_modules ]; then
-        echo -e "jd-base脚本成功添加新的定时任务：\n\n${JsAdd}\n\n脚本地址：${ShellURL}" > ${ContentNewTask}
+        echo -e "成功添加新的定时任务：\n\n${JsAdd}" > ${ContentNewTask}
         Notify_NewTask
       fi
     else
       echo -e "添加新的定时任务出错，请手动添加...\n"
       if [ -d ${ScriptsDir}/node_modules ]; then
-        echo -e "jd-base脚本尝试自动添加以下新的定时任务出错，请手动添加：\n\n${JsAdd}" > ${ContentNewTask}
+        echo -e "尝试自动添加以下新的定时任务出错，请手动添加：\n\n${JsAdd}" > ${ContentNewTask}
         Notify_NewTask
       fi
     fi
@@ -319,7 +319,8 @@ then
 else
   echo -e "\nshell脚本更新失败，请检查原因后再次运行git_pull.sh，或等待定时任务自动再次运行git_pull.sh...\n"
 fi
-
+## 更新crontab
+[[ $(date "+%-H") -le 2 ]] && Update_Cron
 ## 克隆或更新js脚本
 if [ ${ExitStatusShell} -eq 0 ]; then
   echo -e "--------------------------------------------------------------\n"
