@@ -10,4 +10,4 @@ docker run -dit \
 	--hostname jd \
 	--restart always \
 	noobx/jd:gitee
-	 ```
+	```
