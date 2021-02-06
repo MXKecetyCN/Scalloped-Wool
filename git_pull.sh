@@ -346,7 +346,7 @@ else
 fi
 
 ## 调用用户自定义的diy.sh
-if [ "${EnableExtraShell}" = "true" ]; then
+if [[ ${EnableExtraShell} == true ]]; then
   if [ -f ${FileDiy} ]
   then
     . ${FileDiy}
