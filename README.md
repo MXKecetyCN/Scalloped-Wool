@@ -1,5 +1,6 @@
 # jd-base
- ```docker run -dit \
+ ```
+docker run -dit \
 	-v /root/jd/config:/jd/config \
 	-v /root/jd/log:/jd/log \
 	-p 5678:5678 \
