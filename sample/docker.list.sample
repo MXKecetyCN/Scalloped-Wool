@@ -14,7 +14,6 @@
 # 请保留任务名称中的前缀"jd_"，去掉后缀".js"，如果有些任务你不想运行，注释掉就好了，不要删除。
 # 非lxk0301/jd_scripts仓库中的脚本不能以“jd_”、“jr_”、“jx_”开头。请在最后保留一个空行。
 5 9 * * * bash jd jd_bean_change
-5 9 * * * bash jd jd_bean_change2
 28 5 * * * bash jd jd_bean_home
 4 0,9 * * * bash jd jd_bean_sign
 0,30 0 * * * bash jd jd_blueCoin
