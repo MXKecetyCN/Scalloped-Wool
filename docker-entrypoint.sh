@@ -38,12 +38,6 @@ if [ ! -s ${JD_DIR}/config/auth.json ]; then
   cp -fv ${JD_DIR}/sample/auth.json ${JD_DIR}/config/auth.json
   echo
 fi
-if [ ! -s ${JD_DIR}/config/diy.sh ]; then
-  echo -e "检测到config配置目录下不存在diy.sh，从示例文件复制一份用于初始化...\n"
-  cp -fv ${JD_DIR}/sample/diy.sh.sample ${JD_DIR}/config/diy.sh
-  echo
-fi
-
 echo -e "========================3. 启动挂机程序========================\n"
 if [[ ${ENABLE_HANGUP} == true ]]; then
   . ${JD_DIR}/config/config.sh
