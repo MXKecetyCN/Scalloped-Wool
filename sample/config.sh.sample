@@ -403,48 +403,6 @@ ForOtherNianPk3=""
 ForOtherNianPk4=""
 ForOtherNianPk5=""
 ForOtherNianPk6=""
-
-
-################################## 定义神仙书院活动互助（选填） ##################################
-## 具体填法及要求详见本文件最下方“互助码填法示例”
-## 仅2021年2月5日前有效
-MyImmortal1=""
-MyImmortal2=""
-MyImmortal3=""
-MyImmortal4=""
-MyImmortal5=""
-MyImmortal6=""
-MyImmortalA=""
-MyImmortalB=""
-
-ForOtherImmortal1=""
-ForOtherImmortal2=""
-ForOtherImmortal3=""
-ForOtherImmortal4=""
-ForOtherImmortal5=""
-ForOtherImmortal6=""
-
-
-################################## 定义京东手机年终奖活动互助（选填） ##################################
-## 具体填法及要求详见本文件最下方“互助码填法示例”
-## 仅2021年2月8日(含)前有效
-MyJdMobileFestival1=""
-MyJdMobileFestival2=""
-MyJdMobileFestival3=""
-MyJdMobileFestival4=""
-MyJdMobileFestival5=""
-MyJdMobileFestival6=""
-MyJdMobileFestivalA=""
-MyJdMobileFestivalB=""
-
-ForOtherJdMobileFestival1=""
-ForOtherJdMobileFestival2=""
-ForOtherJdMobileFestival3=""
-ForOtherJdMobileFestival4=""
-ForOtherJdMobileFestival5=""
-ForOtherJdMobileFestival6=""
-
-
 ################################## 定义京东压岁钱活动互助（选填） ##################################
 ## 具体填法及要求详见本文件最下方“互助码填法示例”
 ## 仅2021年2月11日(含)前有效
@@ -611,15 +569,6 @@ jdUnsubscribeStopGoods=""
 jdUnsubscribeStopShop=""
 
 
-################################## 定义注销店铺会员参数（选填） ##################################
-## jd_unbind脚本需要的，注销京东已开的店铺会员，不是注销京东plus会员，个别店铺无法注销
-## 此参数控制每次运行脚本时注销多少个店铺会员，默认200
-export UN_BIND_CARD_NUM=""
-
-## 遇到此参数设定的会员卡则跳过不进行注销，多个会员卡之间以 & 分隔，默认值"京东PLUS会员"
-export UN_BIND_STOP_CARD=""
-
-
 ################################## 疯狂的JOY（选填） ##################################
 ## 疯狂的JOY循环助力，"true" 表示循环助力，"false" 表示不循环助力，默认 "false"
 export JDJOY_HELPSELF=""
@@ -634,18 +583,6 @@ export JDJOY_APPLYJDBEAN=""
 ################################## 定义是否自动加购物车（选填） ##################################
 ## 口袋书店和东东小窝有些任务需要将商品加进购物车才能完成，默认 "false" 不做这些任务，如想做，请设置为 "true"
 export PURCHASE_SHOPS=""
-
-
-################################## 你所处的经纬度（选填） ##################################
-## 神仙书院（jd_immortal.js）这个脚本所需的，你所处的经纬度，用于做逛身边好店任务，如：export JD_IMMORTAL_LATLON='{"lat":33.1, "lng":118.1}'
-## 可以使用手机自带的指南针获取所在经纬度，越精确越好，最长可保留小数点后9位数字
-export JD_IMMORTAL_LATLON=''
-
-
-################################## 京东炸年兽小程序自定义UA变量（选填） ##################################
-## 京东炸年兽（（jd_nian_wechat.js））这个脚本所需的，需要使用抓包工具自行抓包，建议填写，防止黑号。
-## 示例：export JD_WECHAT_USER_AGENT="Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15A148 MicroMessenger/7.0.20(0x17001320) NetType/WIFI Language/zh_CN"
-export JD_WECHAT_USER_AGENT=""
 
 
 ################################## Telegram 代理（选填） ##################################
