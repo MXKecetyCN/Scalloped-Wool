@@ -40,7 +40,7 @@ if [ ! -s ${JD_DIR}/config/auth.json ]; then
 fi
 if [ ! -s ${JD_DIR}/config/diy.sh ]; then
   echo -e "检测到config配置目录下不存在diy.sh，从示例文件复制一份用于初始化...\n"
-  cp -fv ${JD_DIR}/sample/diy.sh ${JD_DIR}/config/diy.sh
+  cp -fv ${JD_DIR}/sample/diy.sh.sample ${JD_DIR}/config/diy.sh
   echo
 fi
 
