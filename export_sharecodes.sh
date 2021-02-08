@@ -6,7 +6,7 @@ LogDir=${ShellDir}/log
 [[ ${ANDROID_RUNTIME_ROOT}${ANDROID_ROOT} ]] && Opt="P" || Opt="E"
 Tips="从日志中未找到任何互助码..."
 
-## 所有有互助码的活动，只需要把脚本名称去掉前缀jd_后列在Name1中，将其中文名称列在Name2中即可。Name1和Name2中两个名称必须一一对应。
+## 所有有互助码的活动，只需要把脚本名称去掉前缀jd_后列在Name1中，将其中文名称列在Name2中即可。Name1和Name2中两个名称必须一一对应！
 Name1=(fruit pet plantBean dreamFactory jdfactory crazy_joy jxnc bookshop cash sgmh newYearMoney)
 Name2=(东东农场 东东萌宠 京东种豆得豆 京喜工厂 东东工厂 crazyJoy任务 京喜农场 口袋书店 签到领现金 闪购盲盒 压岁钱)
 
