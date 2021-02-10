@@ -1,6 +1,6 @@
-## Version: v3.25.2
-## Date: 2021-02-08
-## Update Content: 删除过期活动变量
+## Version: v3.26.2
+## Date: 2021-02-10
+## Update Content: 添加环球挑战赛互助，第一次添加互助变量，待测试
 
 ## 上面版本号中，如果第2位数字有变化，那么代表增加了新的参数，如果只有第3位数字有变化，仅代表更新了注释，没有增加新的参数，可更新可不更新
 ## 如需更新，请参考WIKI（https://github.com/EvineDeng/jd-base/wiki）中"如何更新配置文件"部分的操作说明，进行智能比对后修改。
@@ -421,6 +421,26 @@ ForOtherNY3=""
 ForOtherNY4=""
 ForOtherNY5=""
 ForOtherNY6=""
+
+
+################################## 定义京东环球挑战赛活动互助（选填） ##################################
+## 具体填法及要求详见本文件最下方“互助码填法示例”
+## 仅2021年2月22日(含)前有效
+MyGLOBAL1=""
+MyGLOBAL2=""
+MyGLOBAL3=""
+MyGLOBAL4=""
+MyGLOBAL5=""
+MyGLOBAL6=""
+MyGLOBALA=""
+MyGLOBALB=""
+
+ForOtherGLOBAL1=""
+ForOtherGLOBAL2=""
+ForOtherGLOBAL3=""
+ForOtherGLOBAL4=""
+ForOtherGLOBAL5=""
+ForOtherGLOBAL6=""
 
 
 ################################## 定义东东超市蓝币兑换数量（选填） ##################################

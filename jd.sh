@@ -79,6 +79,7 @@ function Combin_All {
   export JSMOBILEFESTIVAL_SHARECODES=$(Combin_Sub ForOtherJdMobileFestival)
   export JD818_SHARECODES=$(Combin_Sub ForOtherJd818)
   export JDNY_SHARECODES=$(Combin_Sub ForOtherNY)
+  export JDGLOBAL_SHARECODES=$(Combin_Sub ForOtherGLOBAL)
 }
 
 ## 转换JD_BEAN_SIGN_STOP_NOTIFY或JD_BEAN_SIGN_NOTIFY_SIMPLE
