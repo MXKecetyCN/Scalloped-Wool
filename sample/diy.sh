@@ -6,10 +6,10 @@ for (( i=0; i<=${#Host_IP[@]}; i++ )) do
 echo "${Host_IP[$i]} ${Host_Name[$i]}" >> /etc/hosts
 done
 
+
 ##############################作者昵称（必填）##############################
 # 使用空格隔开
 author_list="yangtingxiao whyour"
-
 ##############################作者脚本地址URL（必填）##############################
 # 例如：https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_nc.js
 # 1.从作者库中随意挑选一个脚本地址，每个作者的地址添加一个即可，无须重复添加
@@ -32,12 +32,8 @@ rand(){
     num=$(cat /proc/sys/kernel/random/uuid | cksum | awk -F ' ' '{print $1}')
     echo $(($num%$max+$min))
 }
-
-
-
 cd $ScriptsDir   # 在 git_pull.sh 中已经定义 ScriptsDir 此变量，diy.sh 由 git_pull.sh 调用，因此可以直接使用此变量
 index=1
-
 for author in $author_list
 do
   echo -e "开始下载 $author 的脚本"
