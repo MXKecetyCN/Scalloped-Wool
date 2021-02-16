@@ -1,4 +1,4 @@
-## Version: v3.26.6
+## Version: v3.26.7
 ## Date: 2021-02-17
 ## Update Content: 经过测试环球挑战赛报错是默认cron整点运行的锅；请自己更改默认cron，本次为通知无任何更新
 
