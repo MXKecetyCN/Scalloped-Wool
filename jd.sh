@@ -102,7 +102,7 @@ function Combin_All {
   #京东赚赚(jd_jdzz.js)
   export JDZZ_SHARECODES=$(Combin_Sub ForOtherJdzz)
   #crazyJoy(jd_crazy_joy.js)
-  export JDJOY_SHARECODES=$(Combin_Sub ForOtherJoy "JaCqOT9JcivS6ROt9tZf5at9zd5YaBeE@IRe4ViM_YNAApOuPq92Slg==@gLa0u-JLETe_b7Y0-JE-oA==")
+  export JDJOY_SHARECODES=$(Combin_Sub ForOtherJoy "JaCqOT9JcivS6ROt9tZf5at9zd5YaBeE@gLa0u-JLETe_b7Y0-JE-oA==")
   #惊喜农场(jd_jxnc.js)
   export JXNC_SHARECODES=$(Combin_Sub ForOtherJxnc)
   #口袋书店(jd_bookshop.js)
