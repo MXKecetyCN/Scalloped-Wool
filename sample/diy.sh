@@ -55,7 +55,7 @@ do
     wget -q --no-check-certificate $url -O $name.new
 
     # 如果上一步下载没问题，才去掉后缀".new"，如果上一步下载有问题，就保留之前正常下载的版本
-    # 查找脚本内cron关键字并添加到crontab.list
+    # 随机添加个cron到crontab.list
     if [ $? -eq 0 ]; then
       mv -f $name.new $name
       echo -e "更新 $name 完成...\n"
