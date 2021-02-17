@@ -25,11 +25,11 @@ jobs:
       - name: npm install
         if: env.YOUTH_HEADER
         run: |
+          git checkout Sunert
           npm install
       - name: '运行 【中青看点】'
         if: env.YOUTH_HEADER
         run: |
-          cd ~/Scalloped-Wool
           node Task/youth.js
         env:
           YOUTH_NOTIFY_CONTROL: ${{ secrets.YOUTH_NOTIFY_CONTROL }}
