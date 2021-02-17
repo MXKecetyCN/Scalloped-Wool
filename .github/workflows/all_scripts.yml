@@ -20,21 +20,27 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Gitee-🔄自动同步🔄-Github
+      - name: lxk0301-🔄自动同步🔄
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
           source_repo: "https://gitee.com/lxk0301/jd_scripts.git"
           source_branch: "master"
-          destination_branch: "jd"
+          destination_branch: "lxk0301"
           github_token: ${{ github.event.client_payload.PAT || secrets.PAT }}
-      # 我自己同步到gitee使用，其他人可忽略
-      - name: sync github -> gitee
-        uses: Yikun/hub-mirror-action@master
-        if: env.dst_key
+      - name: ziye66666-🔄自动同步🔄
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
         with:
-          src: github/MXKecetyCN
-          dst: gitee/MXKecetyCN
-          static_list: "Scalloped-Wool"
-          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
-          dst_token: ${{ secrets.GITEE_TOKEN }}
+          source_repo: "https://github.com/ziye66666/JavaScript.git"
+          source_branch: "main"
+          destination_branch: "ziye66666"
+          github_token: ${{ github.event.client_payload.PAT || secrets.PAT }}
+      - name: ZhiYi-N-🔄自动同步🔄
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/ZhiYi-N/Private-Script.git"
+          source_branch: "master"
+          destination_branch: "ZhiYi-N"
+          github_token: ${{ github.event.client_payload.PAT || secrets.PAT }}
