@@ -1,5 +1,5 @@
 # File: .github/workflows/repo-sync.yml
-name: Gitee-🔄自动同步🔄-Github
+name: All_Scripts-🔄自动同步🔄
 on:
   schedule:
     - cron: '20 11 * * *'
