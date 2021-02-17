@@ -45,6 +45,6 @@ jobs:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           PUSH_KEY: ${{ github.event.client_payload.PUSH_KEY || secrets.PUSH_KEY }}
-		  YOUTH_HEADER: ${{ secrets.YOUTH_HEADER }}
+	  YOUTH_HEADER: ${{ secrets.YOUTH_HEADER }}
           YOUTH_ARTBODY: ${{ secrets.YOUTH_ARTBODY }}
           YOUTH_TIME: ${{ secrets.YOUTH_TIME }}
