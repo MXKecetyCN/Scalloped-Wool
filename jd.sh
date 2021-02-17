@@ -100,7 +100,7 @@ function Combin_All {
   #东东工厂(jd_jdfactory.js)
   export DDFACTORY_SHARECODES=$(Combin_Sub ForOtherJdFactory "T022u_x3QRke_EnVIR_wnPEIcQCjVWnYaS5kRrbA@T012a1zrlZeWI-dHCjVWnYaS5kRrbA")
   #京东赚赚(jd_jdzz.js)
-  export JDZZ_SHARECODES=$(Combin_Sub ForOtherJdzz)
+  export JDZZ_SHARECODES=$(Combin_Sub ForOtherJdzz "Su_x3QRke_EnVIR_wnPEIcQ@S5KkcHkJujwKkXXy9wK9N@Sa1zrlZeWI-dH")
   #crazyJoy(jd_crazy_joy.js)
   export JDJOY_SHARECODES=$(Combin_Sub ForOtherJoy "JaCqOT9JcivS6ROt9tZf5at9zd5YaBeE@gLa0u-JLETe_b7Y0-JE-oA==")
   #惊喜农场(jd_jxnc.js)
