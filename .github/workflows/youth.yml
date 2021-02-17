@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         if: env.JD_COOKIE
         run: |
-          git clone https://github.com/1217079729/TaskAction.git ~/TaskAction
+          git clone https://github.com/MXKecetyCN/Scalloped-Wool.git ~/Scalloped-Wool
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         if: env.JD_COOKIE
@@ -35,11 +35,12 @@ jobs:
       - name: npm install
         if: env.JD_COOKIE
         run: |
-          cd ~/TaskAction
+          cd ~/Scalloped-Wool
           git checkout jd_code
           npm install
       - name: '中青看点'
         run: |
+          cd ~/Scalloped-Wool
           node Task/youth.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
