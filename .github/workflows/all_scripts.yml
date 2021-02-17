@@ -44,3 +44,11 @@ jobs:
           source_branch: "master"
           destination_branch: "ZhiYi-N"
           github_token: ${{ github.event.client_payload.PAT || secrets.PAT }}
+      - name: xmly_speed-🔄自动同步🔄
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/Zero-S1/xmly_speed.git"
+          source_branch: "master"
+          destination_branch: "xmly_speed"
+          github_token: ${{ github.event.client_payload.PAT || secrets.PAT }}
