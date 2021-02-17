@@ -43,7 +43,7 @@ jobs:
                   QYWX_AM: ${{ github.event.client_payload.QYWX_AM || secrets.QYWX_AM }}
                   PUSH_PLUS_TOKEN: ${{ github.event.client_payload.PUSH_PLUS_TOKEN || secrets.PUSH_PLUS_TOKEN }}
                   PUSH_PLUS_USER: ${{ github.event.client_payload.PUSH_PLUS_USER || secrets.PUSH_PLUS_USER }}
-                  SYNCURL: https://raw.githubusercontent.com/ziye666/JavaScript/main/Task/flw.js
+                  SYNCURL: https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/flw.js
                   FL_flwURL: ${{ secrets.FL_flwURL }}
                   FL_flwHEADER: ${{ secrets.FL_flwHEADER }}		
                   FL_flwspBODY: ${{ secrets.FL_flwspBODY }}	
