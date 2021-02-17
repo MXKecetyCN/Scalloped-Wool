@@ -52,3 +52,11 @@ jobs:
           source_branch: "master"
           destination_branch: "xmly_speed"
           github_token: ${{ github.event.client_payload.PAT || secrets.PAT }}
+      - name: Sunert-🔄自动同步🔄
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/GoodHolidays/Scripts.git"
+          source_branch: "master"
+          destination_branch: "Sunert"
+          github_token: ${{ github.event.client_payload.PAT || secrets.PAT }}
