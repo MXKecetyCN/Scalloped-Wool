@@ -2,7 +2,7 @@
 name: Gitee-🔄自动同步🔄-Github
 on:
   schedule:
-    - cron: '0/20 1-4,11-16 * * *'
+    - cron: '20 11 * * *'
   workflow_dispatch:
   watch:
     types: started
