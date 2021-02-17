@@ -50,3 +50,4 @@ jobs:
                   FL_flwqwBODY: ${{ secrets.FL_flwqwBODY }}        
                   FL_CASH: ${{ secrets.FL_CASH }}
                   FL_DHCASH: ${{ secrets.FL_DHCASH }}
+                  FL_flwydBODY: ${{ secrets.FL_flwydBODY }}
