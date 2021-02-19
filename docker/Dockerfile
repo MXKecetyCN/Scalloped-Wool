@@ -25,7 +25,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
                              perl \
                              openssl \
                              python3-dev \
-                             make
+                             make \
     && rm -rf /var/cache/apk/* \
     && pip3 install --upgrade pip \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
