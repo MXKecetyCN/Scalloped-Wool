@@ -24,14 +24,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
                              tzdata \
                              perl \
                              openssl \
-                             build-dependencies \
-                             python3-dev \
-                             py3-pip \
-                             libffi-dev \
-                             openssl-dev \
-                             gcc \
-                             libc-dev \  
-                             make              
+                             python \
     && rm -rf /var/cache/apk/* \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
