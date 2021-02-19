@@ -11,3 +11,7 @@
 	--restart always \
 	noobx/jd:gitee
 ```
+node基础镜像
+noobx/jd:gitee
+集成python与node镜像
+noobx/jd:py
