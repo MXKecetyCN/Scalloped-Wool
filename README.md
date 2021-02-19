@@ -55,16 +55,11 @@ noobx/jd:py
     ```shell
     docker exec -it jd bash jd resetpwd
     ```
-9. 手动运行脚本
-    ```
-    docker exec -it jd bash jd xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
-    docker exec -it jd bash jd xxx now  # 无论是否设置了随机延迟，均立即运行
-    ```
-10. 查看挂机脚本日志
+9. 查看挂机脚本日志
     ```shell
     docker exec -it jd pm2 monit`或`docker exec -it jd pm2 logs
     ```
-11. 如何自动更新容器
+10. 如何自动更新容器
 
     ```
     docker run -d \
