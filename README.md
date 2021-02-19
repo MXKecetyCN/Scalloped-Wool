@@ -52,18 +52,18 @@ noobx/jd:py
 	docker logs -f jd
     ```
 8. 重置WEB面板密码
-```shell
-docker exec -it jd bash jd resetpwd
-```
+    ```shell
+    docker exec -it jd bash jd resetpwd
+    ```
 9. 手动运行脚本
     ```
     docker exec -it jd bash jd xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
     docker exec -it jd bash jd xxx now  # 无论是否设置了随机延迟，均立即运行
     ```
 10. 查看挂机脚本日志
-```shell
-docker exec -it jd pm2 monit`或`docker exec -it jd pm2 logs
-```
+    ```shell
+    docker exec -it jd pm2 monit`或`docker exec -it jd pm2 logs
+    ```
 # 如何自动更新容器
 安装`containrrr/watchtower`可以自动更新容器，它也是一个容器，但这个容器可以监视你安装的所有容器的原始镜像的更新情况，如有更新，它将使用你原来的配置自动重新部署容器。部署`containrrr/watchtower`最简单的方式如下：
 
