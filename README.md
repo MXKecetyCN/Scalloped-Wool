@@ -19,4 +19,4 @@ noobx/jd:gitee
 ```
 noobx/jd:py
 ```
-重新构建了下镜像，减少镜像体积；原先是先pull LXK大佬库，目前是启动容器后再pull，如重新安装后请等待1-2分钟
+重新构建了下镜像，减少镜像体积；原先是先pull LXK大佬库，目前是启动容器后再pull，如重新安装请等待1-2分钟后执行：docker exec -it jd bash git_pull
