@@ -67,3 +67,7 @@ noobx/jd:py
         -v /var/run/docker.sock:/var/run/docker.sock \
         containrrr/watchtower
     ```
+11. 重启容器
+   ```
+   docker restart jd
+   ```
