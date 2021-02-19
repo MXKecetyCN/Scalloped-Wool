@@ -20,6 +20,11 @@ noobx/jd:gitee
 ```
 noobx/jd:py
 ```
+# 傻瓜式安装(BY:老揭力)
+执行一键脚本，一路回车，直到更新的镜像获取完毕
+```
+wget -q https://gitee.com/jerrykuku/jd-docker/raw/master/jd-docker.sh -O jd-docker.sh && chmod +x jd-docker.sh && ./jd-docker.sh
+```
 # 你要知道的命令↓
 1. 手动 git pull 更新脚本
 ```shell
