@@ -64,9 +64,8 @@ noobx/jd:py
     ```shell
     docker exec -it jd pm2 monit`或`docker exec -it jd pm2 logs
     ```
-# 如何自动更新容器
-安装`containrrr/watchtower`可以自动更新容器，它也是一个容器，但这个容器可以监视你安装的所有容器的原始镜像的更新情况，如有更新，它将使用你原来的配置自动重新部署容器。部署`containrrr/watchtower`最简单的方式如下：
-1. 
+11. 如何自动更新容器
+
     ```
     docker run -d \
         --name watchtower \
