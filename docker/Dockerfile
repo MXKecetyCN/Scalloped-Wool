@@ -1,4 +1,4 @@
-FROM node:lts-alpine
+FROM python:3.6.13-alpine
 LABEL maintainer="Evine Deng <evinedeng@foxmail.com>"
 ARG JD_BASE_URL=https://github.com/dockere/jd-base
 ARG JD_BASE_BRANCH=master
@@ -15,6 +15,9 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && apk update -f \
     && apk upgrade \
     && apk --no-cache add -f bash \
+                             tzdata \
+                             nodejs \
+                             npm \
                              coreutils \
                              moreutils \
                              git \
@@ -24,10 +27,16 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
                              tzdata \
                              perl \
                              openssl \
-                             python3-dev \
                              make \
+                             gcc \
+                             g++ \
+                             libc-dev \
+                             musl-dev \
+                             musl \
+                             autoconf \ 
+                             libtool \
+    && rm -rf /tmp/* \
     && rm -rf /var/cache/apk/* \
-    && pip3 install --upgrade pip \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
     && git clone -b ${JD_BASE_BRANCH} ${JD_BASE_URL} ${JD_DIR} \
