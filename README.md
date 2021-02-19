@@ -59,7 +59,11 @@ noobx/jd:py
     ```shell
     docker exec -it jd pm2 monit`或`docker exec -it jd pm2 logs
     ```
-10. 如何自动更新容器
+10. 重启容器
+    ```
+    docker restart jd
+    ```
+11. 如何自动更新容器
 
     ```
     docker run -d \
@@ -67,7 +71,3 @@ noobx/jd:py
         -v /var/run/docker.sock:/var/run/docker.sock \
         containrrr/watchtower
     ```
-11. 重启容器
-   ```
-   docker restart jd
-   ```
