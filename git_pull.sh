@@ -322,11 +322,11 @@ fi
 ## 更新crontab
 [[ $(date "+%-H") -le 2 ]] && Update_Cron
 ## 克隆或更新js脚本
-if [ ${ExitStatusShell} -eq 0 ]; then
-  echo -e "--------------------------------------------------------------\n"
-  [ -f ${ScriptsDir}/package.json ] && PackageListOld=$(cat ${ScriptsDir}/package.json)
-  [ -d ${ScriptsDir}/.git ] && Git_PullScripts || Git_CloneScripts
-fi
+#if [ ${ExitStatusShell} -eq 0 ]; then
+#  echo -e "--------------------------------------------------------------\n"
+#  [ -f ${ScriptsDir}/package.json ] && PackageListOld=$(cat ${ScriptsDir}/package.json)
+#  [ -d ${ScriptsDir}/.git ] && Git_PullScripts || Git_CloneScripts
+#fi
 
 ## 执行各函数
 if [[ ${ExitStatusScripts} -eq 0 ]]
