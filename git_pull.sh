@@ -29,7 +29,8 @@ ShellURL=https://github.com/dockere/jd-base
 function Update_Cron {
   if [ -f ${ListCron} ]; then
     RanMin=$((${RANDOM} % 60))
-    RanSleep=5
+    echo -e "${RANDOM}"
+    RanSleep=$((${RANDOM} % 56))
     RanHourArray[0]=$((${RANDOM} % 3))
     for ((i=1; i<14; i++)); do
       j=$(($i - 1))
