@@ -1,4 +1,4 @@
-FROM node:lts-alpine
+FROM alpine:3.13.2
 LABEL maintainer="Evine Deng"
 ARG JD_BASE_URL=https://github.com/dockere/jd-base
 ARG JD_BASE_BRANCH=master
@@ -14,6 +14,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && apk update -f \
     && apk upgrade \
     && apk --no-cache add -f bash \
+                             node.js \
+                             npm \
                              coreutils \
                              moreutils \
                              git \
