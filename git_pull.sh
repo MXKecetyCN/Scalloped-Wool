@@ -30,7 +30,7 @@ function Update_Cron {
   if [ -f ${ListCron} ]; then
     RanMin=$((${RANDOM} % 60))
     RanSleep=$((${RANDOM} % 56))
-    RanH=$((${RANDOM} %24))
+    RanH=$((${RANDOM} % 24))
 
     for ((i=1; i<14; i++)); do
       j=$(($i - 1))
@@ -38,7 +38,7 @@ function Update_Cron {
       [[ ${tmp} -lt 24 ]] && RanHourArray[i]=${tmp} || break
     done
 
-    perl -i -pe "s|.+(bash git_pull.+)|${RanMin} ${RanHour} ${RanH} \* \* \* sleep ${RanSleep} && \1|" ${ListCron}
+    perl -i -pe "s|.+(bash git_pull.+)|${RanMin} ${RanH} \* \* \* sleep ${RanSleep} && \1|" ${ListCron}
     crontab ${ListCron}
   fi
 }
