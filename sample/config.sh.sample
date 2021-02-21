@@ -1,6 +1,6 @@
-## Version: v3.26.9
-## Date: 2021-02-20
-## Update Content: waiting
+## Version: v3.27.0
+## Date: 2021-02-21
+## Update Content: 原lxk库改为私库；需要用的到秘钥拉取脚本，故重新构建了镜像，自动git_pull改为每天两次，每次拉取自动随机cron，请不要频繁手动git_pull，防止封库
 
 ## 上面版本号中，如果第2位数字有变化，那么代表增加了新的参数，如果只有第3位数字有变化，仅代表更新了注释，没有增加新的参数，可更新可不更新
 ## 如需更新，请参考WIKI（https://github.com/EvineDeng/jd-base/wiki）中"如何更新配置文件"部分的操作说明，进行智能比对后修改。

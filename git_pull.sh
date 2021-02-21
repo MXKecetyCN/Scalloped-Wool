@@ -31,12 +31,17 @@ function Update_Cron {
     RanMin=$((${RANDOM} % 60))
     RanSleep=$((${RANDOM} % 56))
     RanH=$((${RANDOM} % 24))
+    RanHourArray[0]=$((${RANDOM} % 3))
     for ((i=1; i<14; i++)); do
       j=$(($i - 1))
       tmp=$((${RANDOM} % 3 + ${RanHourArray[j]} + 2))
       [[ ${tmp} -lt 24 ]] && RanHourArray[i]=${tmp} || break
     done
-    perl -i -pe "s|.+(bash git_pull.+)|${RanMin} ${RanH} \* \* \* sleep ${RanSleep} && \1|" ${ListCron}
+    RanHour=${RanHourArray[0]}
+    for ((i=1; i<${#RanHourArray[*]}; i++)); do
+      RanHour="${RanHour},${RanH}"
+    done
+    perl -i -pe "s|.+(bash git_pull.+)|${RanMin} ${RanHour} \* \* \* sleep ${RanSleep} && \1|" ${ListCron}
     crontab ${ListCron}
   fi
 }
