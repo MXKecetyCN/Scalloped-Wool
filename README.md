@@ -12,6 +12,10 @@
 	--restart always \
 	noobx/jd:gitee
 ```
+如需映射脚本出来直接在上面加一行：
+```
+-v /安装目录/jd/scripts:/jd/scripts \
+```
 node基础镜像
 ```
 noobx/jd:gitee
