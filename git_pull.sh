@@ -25,7 +25,7 @@ ScriptsURL=git@gitee.com:lxk0301/jd_scripts
 ShellURL=https://github.com/dockere/jd-base
 
 ## 更新crontab，gitee服务器同一时间限制5个链接，因此每个人更新代码必须错开时间，每次执行git_pull随机生成。
-## 每天只更新一次,(分.时.延迟)为随机cron
+## 每天只更新两次,(分.时.延迟)为随机cron
 function Update_Cron {
   if [ -f ${ListCron} ]; then
     RanHour=$(((RANDOM % 6)+7))
