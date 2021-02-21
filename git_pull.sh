@@ -28,17 +28,12 @@ ShellURL=https://github.com/dockere/jd-base
 ## 每天只更新一次,(分.时.延迟)为随机cron
 function Update_Cron {
   if [ -f ${ListCron} ]; then
+    RanHour=$(((RANDOM % 6)+7))
+    ranH=$(((RANDOM % 6)+14))
     RanMin=$((${RANDOM} % 60))
     RanSleep=$((${RANDOM} % 56))
-    RanH=$((${RANDOM} % 24))
-    RanHour="${RanHour},${RanHourArray[i]}"
-    for ((i=1; i<14; i++)); do
-      j=$(($i - 1))
-      tmp=$((${RANDOM} % 3 + ${RanHourArray[j]} + 2))
-      [[ ${tmp} -lt 24 ]] && RanHourArray[i]=${tmp} || break
-    done
-    
-    perl -i -pe "s|.+(bash git_pull.+)|${RanMin} ${RanH} \* \* \* sleep ${RanSleep} && \1|" ${ListCron}
+    H="${RanHour},${ranH}"
+    perl -i -pe "s|.+(bash git_pull.+)|${RanMin} ${H} \* \* \* sleep ${RanSleep} && \1|" ${ListCron}
     crontab ${ListCron}
   fi
 }
