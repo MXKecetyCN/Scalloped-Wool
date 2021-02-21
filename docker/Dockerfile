@@ -41,7 +41,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 RUN mkdir -p /root/.ssh && \
     chmod 600 /root/.ssh && \
     ssh-keyscan giee.com > /root/.ssh/known_hosts 
-RUN echo $KEY > /root/.ssh/id_rsa && \
+RUN echo ${KEY} > /root/.ssh/id_rsa && \
     chmod 600 /root/.ssh/id_rsa && 
         
 WORKDIR ${JD_DIR}
