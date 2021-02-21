@@ -37,10 +37,12 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && cp -f ${JD_DIR}/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh \
     && chmod 777 /usr/local/bin/docker-entrypoint.sh \
     && rm -rf /jd/docker \
-    && rm -rf /root/.npm \
-    && mkdir -p /root/.ssh \
-    && echo -e $KEY > /root/.ssh/id_rsa \
-    && chmod 600 /root/.ssh/id_rsa \
-    && ssh-keyscan gitee.com > /root/.ssh/known_hosts \
+    && rm -rf /root/.npm
+RUN mkdir -p /root/.ssh && \
+    chmod 600 /root/.ssh && \
+    ssh-keyscan giee.com > /root/.ssh/known_hosts 
+RUN echo $KEY > /root/.ssh/id_rsa && \
+    chmod 600 /root/.ssh/id_rsa && 
+        
 WORKDIR ${JD_DIR}
 ENTRYPOINT docker-entrypoint.sh
