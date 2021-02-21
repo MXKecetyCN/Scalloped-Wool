@@ -29,18 +29,14 @@ ShellURL=https://github.com/dockere/jd-base
 function Update_Cron {
   if [ -f ${ListCron} ]; then
     RanMin=$((${RANDOM} % 60))
-    echo -e "${RANDOM}"
     RanSleep=$((${RANDOM} % 56))
-    RanHourArray[0]=$((${RANDOM} % 3))
+
     for ((i=1; i<14; i++)); do
       j=$(($i - 1))
       tmp=$((${RANDOM} % 3 + ${RanHourArray[j]} + 2))
       [[ ${tmp} -lt 24 ]] && RanHourArray[i]=${tmp} || break
     done
-    RanHour=${RanHourArray[0]}
-    for ((i=1; i<${#RanHourArray[*]}; i++)); do
-      RanHour="${RanHour},${RanHourArray[i]}"
-    done
+
     perl -i -pe "s|.+(bash git_pull.+)|${RanMin} ${RanHour} \* \* \* sleep ${RanSleep} && \1|" ${ListCron}
     crontab ${ListCron}
   fi
