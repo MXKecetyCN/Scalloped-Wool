@@ -10,7 +10,7 @@ Tips="从日志中未找到任何互助码..."
 Name1=(fruit pet plantBean dreamFactory jdfactory crazy_joy jxnc bookshop cash sgmh global)
 Name2=(东东农场 东东萌宠 京东种豆得豆 京喜工厂 东东工厂 crazyJoy任务 京喜农场 口袋书店 签到领现金 闪购盲盒 环球挑战赛)
 
-## 导出互助码的通用程序
+## 导出互助码的通用程序.
 function Cat_Scodes {
   if [ -d ${LogDir}/jd_$1 ] && [[ $(ls ${LogDir}/jd_$1) != "" ]]; then
     cd ${LogDir}/jd_$1
