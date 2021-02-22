@@ -2,7 +2,7 @@
  * @Author: lxk0301 https://github.com/lxk0301 
  * @Date: 2020-12-20 13:50:34 
  * @Last Modified by: lxk0301
- * @Last Modified time: 2020-12-20 13:51:02
+ * @Last Modified time: 2020-12-20 13:51:01
  */
 const $ = new Env('通知');
 const notify = require('./scripts/sendNotify');
