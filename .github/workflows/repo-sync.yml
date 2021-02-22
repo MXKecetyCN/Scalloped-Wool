@@ -1,51 +1,28 @@
-########################################
-#
-#使用参考
-#https://zhuanlan.zhihu.com/p/102977226
-#http://yikun.github.io/2020/01/17/%E5%B7%A7%E7%94%A8Github-Action%E5%90%8C%E6%AD%A5%E4%BB%A3%E7%A0%81%E5%88%B0Gitee/
-#https://github.com/Yikun/hub-mirror-action/blob/master/README_CN.md
-#https://help.github.com/cn/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
-#
-# 建议先在gitee上先导入github的项目，再编辑此文件增加同步功能。这样就能利用好gitee的强制同步功能了。
-########################################
-name: Gitee repos mirror periodic sync job
-
+name: Gitee repos mirror periodic job
 on:
-  # push推送时触发
-  #push:
-  # 定时任务触发
+# 如果需要PR触发把push前的#去掉
+# push:
   schedule:
     # 每天北京时间9点跑
-    # Runs at 01:00 UTC (9:00 AM Beijing) every day
     - cron:  '0 1 * * *'
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - name: Cache phpdragon src repos
-      # 引用发行版的主要版本
-      uses: actions/cache@v1
-
     - name: Mirror the Github organization repos to Gitee.
-      # 引用master分支的脚本支持
-      uses: phpdragon/hub-mirror-action@master
+      uses: Yikun/gitee-mirror-action@v0.01
       with:
-        #  需要被同步的源端账户名，如github/phpdragon，表示Github的phpdragon账户。
+        # 必选，需要同步的Github用户（源）
         src: github/dockere
-        # 需要同步到的目的端账户名，如gitee/phpdragon，表示Gitee的phpdragon账户。
+        # 必选，需要同步到的Gitee的用户（目的）
         dst: gitee/dockere
-        # 用于目的端上传代码的SSH key，用于上传代码
-        dst_key: ${{ secrets.GITEE_PRIVATE_SSH_KEY }}
-        # 创建仓库的API tokens， 用于自动创建不存在的仓库
-        dst_token: ${{ secrets.GITEE_PRIVATE_TOKEN }}
-        account_type: user
-        # 白名单，仅同步白名单中的repos，如“repo1,repo2,repo3”
-        white_list: "jd-base"
-        # 仅同步静态列表，不会再动态获取需同步列表（黑白名单机制依旧生效）
-        # 强制更新
-        force_update: true
-        # clone方式，使用http、ssh方式进行clone
-        clone_style: "ssh"
+        # 必选，Gitee公钥对应的私钥，https://gitee.com/profile/sshkeys
+        dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+        # 必选，Gitee对应的用于创建仓库的token，https://gitee.com/profile/personal_access_tokens
+        dst_token:  ${{ secrets.GITEE_TOKEN }}
+        # 如果是组织，指定组织即可，默认为用户user
+        # account_type: org
+        # 还有黑、白名单，静态名单机制，可以用于更新某些指定库
+        # static_list: repo_name
+        # black_list: 'repo_name,repo_name2'
+        # white_list: 'repo_name,repo_name2'
