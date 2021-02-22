@@ -196,6 +196,18 @@ jd_scripts
  `docker-compose stop` 停止容器；  
  `docker-compose restart` 重启容器；  
  `docker-compose down` 停止并删除容器；  
+
+- 你可能会用到的命令
+   
+   `docker exec -it jd_scripts /bin/sh -c 'git -C /scripts pull && node /scripts/jd_bean_change.js'`  手动运行一脚本
+   
+   `docker exec -it jd_scripts /bin/sh -c 'env'`  查看设置的环境变量
+   
+   `docker exec -it jd_scripts /bin/sh -c 'git pull'` 手动更新jd_scripts仓库最新脚本
+   
+   `docker exec -it jd_scripts /bin/sh` 仅进入容器命令
+   
+   `rm -rf  logs/*.log` 删除logs文件夹里面所有的日志文件
  
 - 如果是群晖用户，在docker注册表搜jd_scripts，双击下载映像。
 不需要docker-compose.yml，只需建个logs/目录，调整`jd_scripts.syno.json`里面对应的配置值，然后导入json配置新建容器。
