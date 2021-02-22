@@ -1,5 +1,5 @@
 # jd-base
-如果您是第一次安装，请等待1-2分钟后执行：docker exec -it jd bash git_pull，食用方法a↓：
+如果您是第一次安装，请等待1-2分钟后执行：docker exec -it jd bash git_pull，食用方法aa↓：
  ```
  docker run -dit \
 	-v /安装目录/jd/config:/jd/config \
