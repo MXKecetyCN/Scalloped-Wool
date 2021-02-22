@@ -5,7 +5,6 @@ Host_Name=('raw.githubusercontent.com' 'raw.githubusercontent.com')
 for (( i=0; i<=${#Host_IP[@]}; i++ )) do
 echo "${Host_IP[$i]} ${Host_Name[$i]}" >> /etc/hosts
 done
-
 ##############################作者昵称（必填）##############################
 # 使用空格隔开
 author_list="i-chenzhe whyour"
@@ -22,7 +21,6 @@ scripts_base_url_2=https://raw.sevencdn.com/whyour/hundun/master/quanx/
 # 将相应作者的脚本填写到以下变量中
 my_scripts_list_1="jd_entertainment.js jd_fanslove.js jd_getFanslove.js"
 my_scripts_list_2="jd_collectBlueCoin.js ddxw.js"
-
 ##############################随机函数##########################################
 rand(){
     min=$1
