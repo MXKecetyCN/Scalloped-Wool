@@ -1,4 +1,4 @@
-#### 2021.02.21日，[jd_scripts](https://gitee.com/lxk0301/jd_scripts)仓库被迫私有 [详见一](./icon/photo.png)，[详见二](./icon/photo.jpeg)
+##### 2021.02.21日，[jd_scripts](https://gitee.com/lxk0301/jd_scripts)仓库被迫私有 [详见一](./icon/photo.png)，[详见二](./icon/photo.jpeg)，老用户重新更新一下[镜像](https://hub.docker.com/r/lxk0301/jd_scripts)后续可同步更新jd_script仓库最新脚本
 ## 特别声明: 
 
 * 本仓库发布的Script项目中涉及的任何解锁和解密分析脚本，仅用于测试和学习研究，禁止用于商业用途，不能保证其合法性，准确性，完整性和有效性，请根据情况自行判断.
