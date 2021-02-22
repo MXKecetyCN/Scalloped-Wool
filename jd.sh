@@ -111,8 +111,6 @@ function Combin_All {
   export JD_CASH_SHARECODES=$(Combin_Sub ForOtherCash "Jhozbeu1b-Ek8GvRw3UR0w@eU9YMrDFHKpVjAicnytU@9rqvuWU9sE-2")
   #闪购盲盒(jd_sgmh.js)
   export JDSGMH_SHARECODES=$(Combin_Sub ForOtherSgmh "T022u_x3QRke_EnVIR_wnPEIcQCjVWmIaW5kRrbA@T0205KkcHkJujwKkXXy9wK9NCjVWmIaW5kRrbA@T012a1zrlZeWI-dHCjVWmIaW5kRrbA")
-  #环球挑战赛(jd_global.js)-活动时间：2021-02-02 至 2021-02-22
-  export JDGLOBAL_SHARECODES=$(Combin_Sub ForOtherGLOBAL "OTZwWkM3VnZUZlMxNko4Y1NxWjMwQXBReG1kbVFsV0JFKzNDZEIveXMvVT0=@TkFDcUEzQzZuMnpHYlArOElxVWFSUT09@U3Q4ZUgzalZMQjI5UitibjNNc0hidz09")
 }
 
 ## 转换JD_BEAN_SIGN_STOP_NOTIFY或JD_BEAN_SIGN_NOTIFY_SIMPLE
