@@ -29,6 +29,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
     && mkdir -p /root/.ssh \
+    && chmod 700 /root/.ssh \
     && cd /root/.ssh \
     && echo -e $KEY > /root/.ssh/id_rsa \
     && chmod 600 /root/.ssh/id_rsa \
