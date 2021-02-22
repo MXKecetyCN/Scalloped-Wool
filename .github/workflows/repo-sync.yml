@@ -1,5 +1,5 @@
 # File: .github/workflows/repo-sync.yml
-name: sync-gitee-docker_2
+name: sync-gitee-docker
 on:
   schedule:
     - cron: '1 0,15 * * *'
@@ -9,7 +9,7 @@ on:
   push:
     branches: [ master ]
   repository_dispatch:
-    types: gitee-docker_2
+    types: gitee-docker
 jobs:
   repo-sync:
     env:
