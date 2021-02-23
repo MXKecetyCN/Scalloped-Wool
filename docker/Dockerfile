@@ -19,7 +19,6 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
                              git \
                              wget \
                              curl \
-                             npm \
                              nano \ 
                              tzdata \
                              perl \
