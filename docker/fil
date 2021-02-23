@@ -1,4 +1,4 @@
-FROM node:lts-alpine
+FROM node:9.2.1-alpine
 LABEL maintainer="Evine Deng"
 ARG JD_BASE_URL=https://gitee.com/dockere/jd-base
 ARG JD_BASE_BRANCH=master
