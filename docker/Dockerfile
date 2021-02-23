@@ -1,4 +1,4 @@
-FROM alpine:3.13.2
+FROM alpine:3.12
 LABEL maintainer="Evine Deng"
 ARG JD_BASE_URL=https://gitee.com/dockere/jd-base
 ARG JD_BASE_BRANCH=master
