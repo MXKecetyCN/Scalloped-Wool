@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM node:lts-alpine
 LABEL maintainer="Evine Deng"
 ARG JD_BASE_URL=https://gitee.com/dockere/jd-base
 ARG JD_BASE_BRANCH=master
@@ -18,10 +18,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
                              moreutils \
                              git \
                              wget \
-                             nodejs \
-                             npm \
                              curl \
-                             nano \ 
+                             nano \
                              tzdata \
                              perl \
                              openssl \
