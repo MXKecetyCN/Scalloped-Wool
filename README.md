@@ -71,7 +71,7 @@ docker exec -it jd pm2 monit`或`docker exec -it jd pm2 logs
 ```
 docker restart jd
 ```
-11. 如何自动更新容器
+11. 如何自动更新容器！
 ```
 docker run -d \
     --name watchtower \
