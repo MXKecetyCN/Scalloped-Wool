@@ -25,7 +25,7 @@ noobx/jd:gitee
 ```
 noobx/jd:py
 ```
-shell一键安装(by:老揭力)
+shell一键安装docker与watchtower(by:老揭力)
 ```shell
 wget -q https://raw.githubusercontent.com/dockere/jd-base/master/sample/jd-docker.sh -O jd-docker.sh && chmod +x jd-docker.sh && ./jd-docker.sh
 ```
