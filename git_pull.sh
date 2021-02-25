@@ -23,6 +23,7 @@ SendCount=${ShellDir}/send_count
 isTermux=${ANDROID_RUNTIME_ROOT}${ANDROID_ROOT}
 ScriptsURL=git@gitee.com:lxk0301/jd_scripts
 ShellURL=https://gitee.com/dockere/jd-base
+LxkdockerURL=https://gitee.com/lxk0301/jd_docker
 
 ## 更新crontab，gitee服务器同一时间限制5个链接，因此每个人更新代码必须错开时间，每次执行git_pull随机生成。
 ## 每天只更新两次,(分.时.延迟)为随机cron
@@ -54,6 +55,7 @@ function Git_CloneScripts {
 
 ## 更新scripts
 function Git_PullScripts {
+  echo -e "更新scripts脚本，原地址：${LxkdockerURL}\n"
   cd ${ScriptsDir}
   git fetch --all
   ExitStatusScripts=$?
