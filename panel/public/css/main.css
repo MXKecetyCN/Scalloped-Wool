@@ -108,7 +108,7 @@ nav .active a {
 
 /* Login page */
 .login-form {
-    width: 305px;
+    width: 300px;
     margin: 6rem auto 0 auto;
     font-family: Tahoma, Geneva, sans-serif;
 }
@@ -211,7 +211,7 @@ nav .active a {
 }
 
 #notice{
-    margin: 1rem 0;
+    margin-top: 1rem;
     text-align: center;
 }
 #notice span{
