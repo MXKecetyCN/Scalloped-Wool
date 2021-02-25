@@ -26,7 +26,7 @@
 			let timeStamp = (new Date()).getTime()
 			$.get("./checkAuthState?t=" + timeStamp, function (data) {
 				if (data.err == 1) {
-					$("nav").after("<div id='notice'><span>" + data.msg + "</span></div>");
+					$("h1").after("<div id='notice'><span>" + data.msg + "</span></div>");
 				}
 			})
 		});
