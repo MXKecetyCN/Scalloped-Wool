@@ -1,5 +1,5 @@
 # jd-base
-如果您是第一次安装，请等待1-2分钟后执行：docker exec -it jd bash git_pull，如你是旁路由，请把-p 5678:5678 \替换成--network host \,食用方法！↓：
+如果您是第一次安装，请等待1-2分钟后执行：docker exec -it jd bash git_pull，如你是旁路由，请把-p 5678:5678 \替换成--network host \,食用方法.！↓：
  ```
  docker run -dit \
 	-v /安装目录/jd/config:/jd/config \
