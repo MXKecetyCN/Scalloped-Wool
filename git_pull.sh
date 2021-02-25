@@ -66,10 +66,16 @@ function Git_PullScripts {
 ## 用户数量UserSum
 function Count_UserSum {
   i=1
-  while [ $i -le 1000 ]; do
-    Tmp=Cookie$i
-    CookieTmp=${!Tmp}
-    [[ ${CookieTmp} ]] && UserSum=$i || break
+  while [ ${i} -le 1000 ]
+  do
+    TmpCK=Cookie${i}
+    eval CookieTmp=$(echo \$${TmpCK})
+    if [ -n "${CookieTmp}" ]
+    then
+      UserSum=${i}
+    else
+      break
+    fi
     let i++
   done
 }
@@ -78,10 +84,10 @@ function Count_UserSum {
 function Change_JoyRunPins {
   j=${UserSum}
   PinALL=""
-  while [[ $j -ge 1 ]]
+  while [ ${j} -ge 1 ]
   do
-    Tmp=Cookie$j
-    CookieTemp=${!Tmp}
+    TmpCK=Cookie${j}
+    eval CookieTemp=$(echo \$${TmpCK})
     PinTemp=$(echo ${CookieTemp} | perl -pe "{s|.*pt_pin=(.+);|\1|; s|%|\\\x|g}")
     PinTempFormat=$(printf ${PinTemp})
     PinALL="${PinTempFormat},${PinALL}"
