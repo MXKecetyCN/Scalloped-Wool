@@ -22,11 +22,19 @@
 	</div>
 
 	<script>
+		$(document).ready(function () {
+			let timeStamp = (new Date()).getTime()
+			$.get("./checkAuthState?t=" + timeStamp, function (data) {
+				if (data.err == 1) {
+					$("h1").after("<div id='notice'><span>" + data.msg + "</span></div>");
+				}
+			})
+		});
 		$("#login").click(function () {
 			let timeStamp = (new Date()).getTime()
 			$user = $(".username").val();
 			$password = $(".password").val();
-			$.post('./auth?t='+timeStamp, { username: $user, password: $password }, function (data) {
+			$.post('./auth?t=' + timeStamp, { username: $user, password: $password }, function (data) {
 				if (data.err == 0) {
 					window.location.href = "./home";
 				} else {
