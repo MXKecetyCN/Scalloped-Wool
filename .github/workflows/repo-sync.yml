@@ -8,8 +8,6 @@ on:
     types: started
   push:
     branches: [ master ]
-  repository_dispatch:
-    types: gitee-docker
 jobs:
   repo-sync:
     env:
