@@ -23,7 +23,6 @@ SendCount=${ShellDir}/send_count
 isTermux=${ANDROID_RUNTIME_ROOT}${ANDROID_ROOT}
 ScriptsURL=git@gitee.com:lxk0301/jd_scripts
 ShellURL=https://gitee.com/dockere/jd-base
-LxkdockerURL=https://gitee.com/lxk0301/jd_docker
 
 ## 更新crontab，gitee服务器同一时间限制5个链接，因此每个人更新代码必须错开时间，每次执行git_pull随机生成。
 ## 每天只更新两次,(分.时.延迟)为随机cron
@@ -55,7 +54,6 @@ function Git_CloneScripts {
 
 ## 更新scripts
 function Git_PullScripts {
-  echo -e "更新scripts脚本，原地址：${LxkdockerURL}\n"
   cd ${ScriptsDir}
   git fetch --all
   ExitStatusScripts=$?
@@ -66,16 +64,10 @@ function Git_PullScripts {
 ## 用户数量UserSum
 function Count_UserSum {
   i=1
-  while [ ${i} -le 1000 ]
-  do
-    TmpCK=Cookie${i}
-    eval CookieTmp=$(echo \$${TmpCK})
-    if [ -n "${CookieTmp}" ]
-    then
-      UserSum=${i}
-    else
-      break
-    fi
+  while [ $i -le 1000 ]; do
+    Tmp=Cookie$i
+    CookieTmp=${!Tmp}
+    [[ ${CookieTmp} ]] && UserSum=$i || break
     let i++
   done
 }
@@ -84,17 +76,15 @@ function Count_UserSum {
 function Change_JoyRunPins {
   j=${UserSum}
   PinALL=""
-  while [ ${j} -ge 1 ]
+  while [[ $j -ge 1 ]]
   do
-    TmpCK=Cookie${j}
-    eval CookieTemp=$(echo \$${TmpCK})
+    Tmp=Cookie$j
+    CookieTemp=${!Tmp}
     PinTemp=$(echo ${CookieTemp} | perl -pe "{s|.*pt_pin=(.+);|\1|; s|%|\\\x|g}")
     PinTempFormat=$(printf ${PinTemp})
     PinALL="${PinTempFormat},${PinALL}"
     let j--
   done
-    PinEvine="Evine,做一颗潇洒的蛋蛋,Evine007,jd_7bb2be8dbd65c,jd_6fae2af082798,jd_664ecc3b78945,277548856_m,米大眼老鼠,"
-  PinALL="${PinALL}${PinEvine}"
   perl -i -pe "{s|(let invite_pins = \[\")(.+\"\];?)|\1${PinALL}\2|; s|(let run_pins = \[\")(.+\"\];?)|\1${PinALL}\2|}" ${ScriptsDir}/jd_joy_run.js
 }
 
