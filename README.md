@@ -2,8 +2,8 @@
 如果您是第一次安装，请等待1-2分钟后执行：docker exec -it jd bash git_pull，如你是旁路由，请更换网络模式添加--network host \,食用方法.！↓：
  ```
  docker run -dit \
-	-v /安装目录/jd/config:/jd/config \
-	-v /安装目录/jd/log:/jd/log \
+	-v $PWD/jd/config:/jd/config \
+	-v $PWD/jd/log:/jd/log \
 	-p 5678:5678 \
 	-e ENABLE_HANGUP=true \
 	-e ENABLE_WEB_PANEL=true \
@@ -12,10 +12,11 @@
 	--restart always \
 	noobx/jd:gitee
 ```
+如需指定目录，请把$PWD更改为指定目录即可，不然则为当前目录！
 执行上面命令之后建议执行'docker logs -f jd'查看安装进度，直到出现Welcome to Node.js v1x.x.0.代表成功！
 #### 如需映射脚本出来直接在上面加一行!：
 ```
--v /安装目录/jd/scripts:/jd/scripts \
+-v $PWD/jd/scripts:/jd/scripts \
 ```
 
 node基础镜像
