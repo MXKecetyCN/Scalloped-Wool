@@ -13,7 +13,7 @@
 	noobx/jd:gitee
 ```
 执行上面命令之后建议执行'docker logs -f jd'查看安装进度，直到出现Welcome to Node.js v1x.x.0.代表成功！
-如需映射脚本出来直接在上面加一行：
+### 如需映射脚本出来直接在上面加一行：
 ```
 -v /安装目录/jd/scripts:/jd/scripts \
 ```
