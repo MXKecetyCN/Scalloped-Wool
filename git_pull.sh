@@ -78,10 +78,10 @@ function Count_UserSum {
 function Change_JoyRunPins {
   j=${UserSum}
   PinALL=""
-  while [[ $j -ge 1 ]]
+  while [ ${j} -ge 1 ]
   do
-    Tmp=Cookie$j
-    CookieTemp=${!Tmp}
+    TmpCK=Cookie${j}
+    eval CookieTemp=$(echo \$${TmpCK})
     PinTemp=$(echo ${CookieTemp} | perl -pe "{s|.*pt_pin=(.+);|\1|; s|%|\\\x|g}")
     PinTempFormat=$(printf ${PinTemp})
     PinALL="${PinTempFormat},${PinALL}"
