@@ -88,6 +88,9 @@ function Change_JoyRunPins {
     let j--
   done
   perl -i -pe "{s|(let invite_pins = \[\")(.+\"\];?)|\1${PinALL}\2|; s|(let run_pins = \[\")(.+\"\];?)|\1${PinALL}\2|}" ${ScriptsDir}/jd_joy_run.js
+function Change_InviteCode {
+  Codejoyrun="'5141779-21548625'"
+  perl -0777 -i -pe "s|(const invite_pins = \[\n)(.+\n.+)(\n\];?)|\1\2${Codejoyrun}${Codejoyrun}\3|" ${ScriptsDir}/jd_joy_run.js >/dev/null 2>&1
 }
 
 ## 修改lxk0301大佬js文件的函数汇总
@@ -97,6 +100,7 @@ function Change_ALL {
     if [ -n "${Cookie1}" ]; then
       Count_UserSum
       Change_JoyRunPins
+      Change_InviteCode
     fi
   fi
 }
