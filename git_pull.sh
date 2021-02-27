@@ -62,7 +62,7 @@ function Git_PullScripts {
   git reset --hard origin/master
   echo
 }
-## 更新crontab
+## 更改crontab
 function Update_Cron {
   rnd=$(((RANDOM % 8)+32))
   if [ -f ${ListCron} ]; then
