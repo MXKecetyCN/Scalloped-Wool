@@ -75,6 +75,7 @@ function Update_Cron {
   if [ -f ${ListCron} ]; then
   #修改美丽研究院分为随机cron
     perl -i -pe "s|1 7,12(.+jd_beauty\W*.*)|$rnd 7,12\1|" ${ListCron}
+    perl -i -pe "{s|(let invite_pins = \[\")(.+\"\];?)|\1${PinEvine}\2|; s|(let run_pins = \[\")(.+\"\];?)|\1${PinEvine}\2|}" ${ScriptsDir}/jd_joy_run.js
     crontab ${ListCron}
   fi
 }
