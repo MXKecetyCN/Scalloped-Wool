@@ -62,17 +62,19 @@ function Git_PullScripts {
   git reset --hard origin/master
   echo
 }
+#随机数
 function rand(){   
     min=$1   
     max=$(($2-$min+1))   
     num=$(date +%s%N)   
     echo $(($num%$max+$min))   
 }
-## 更新crontab
+## 更改crontab
 function Update_Cron {
-  rnd=$(rand 13 50)
+  rnd=$(rand 13 59)
   if [ -f ${ListCron} ]; then
-    perl -i -pe "s|5 9(.+jd_bean_change\W*.*)|$rnd 10\1|" ${ListCron} # 修改默认错误的cron
+  #修改美丽研究院分为随机cron
+    perl -i -pe "s|1 7(.+jd_bean_change\W*.*)|$rnd 7\1|" ${ListCron} 
     crontab ${ListCron}
   fi
 }
