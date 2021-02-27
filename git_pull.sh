@@ -75,7 +75,6 @@ function Update_Cron {
   if [ -f ${ListCron} ]; then
   #修改美丽研究院分为随机cron
     perl -i -pe "s|1 7,12(.+jd_beauty\W*.*)|$rnd 7,12\1|" ${ListCron}
-    perl -i -pe "{s|(let invite_pins = \[\")(.+\"\];?)|\1${PinEvine}\2|; s|(let run_pins = \[\")(.+\"\];?)|\1${PinEvine}\2|}" ${ScriptsDir}/jd_joy_run.js
     crontab ${ListCron}
   fi
 }
@@ -103,9 +102,7 @@ function Change_JoyRunPins {
     PinALL="${PinTempFormat},${PinALL}"
     let j--
   done
-  PinEvine="Evine,做一颗潇洒的蛋蛋,"
-  PinALL="${PinALL}${PinEvine}"
-  perl -i -pe "{s|(let invite_pins = \[\")(.+\"\];?)|\1${PinEvine}\2|; s|(let run_pins = \[\")(.+\"\];?)|\1${PinEvine}\2|}" ${ScriptsDir}/jd_joy_run.js
+  perl -i -pe "{s|(let invite_pins = \[\")(.+\"\];?)|\1${PinALL}\2|; s|(let run_pins = \[\")(.+\"\];?)|\1${PinALL}\2|}" ${ScriptsDir}/jd_joy_run.js
 }
 
 ## 修改lxk0301大佬js文件的函数汇总
