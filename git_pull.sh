@@ -62,7 +62,13 @@ function Git_PullScripts {
   git reset --hard origin/master
   echo
 }
-
+## 更新crontab
+function Update_Cron {
+  if [ -f ${ListCron} ]; then
+    perl -i -pe "s|5 9(.+jd_bean_change\W*.*)|5 10\1|" ${ListCron} # 修改默认错误的cron
+    crontab ${ListCron}
+  fi
+}
 ## 用户数量UserSum
 function Count_UserSum {
   i=1
