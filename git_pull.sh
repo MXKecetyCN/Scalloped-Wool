@@ -74,7 +74,7 @@ function Update_Cron {
   rnd=$(rand 13 59)
   if [ -f ${ListCron} ]; then
   #修改美丽研究院分为随机cron
-    perl -i -pe "s|1 7(.+jd_beauty\W*.*)|$rnd 7\1|" ${ListCron} 
+    perl -i -pe "s|1 7,12(.+jd_beauty\W*.*)|$rnd 7,12\1|" ${ListCron} 
     crontab ${ListCron}
   fi
 }
