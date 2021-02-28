@@ -556,6 +556,9 @@ export PURCHASE_SHOPS=""
 ## 仓库下已经上传diy.sh模板，如果你想使用；可以参考本仓库下 diy.sh 文件；地址：https://raw.githubusercontent.com/dockere/jd-base/master/sample/diy.sh
 EnableExtraShell=""
 
+################################## 定义京喜财富岛通知（选填） ##################################
+## 输入true为通知,默认 "false",不填则为不通知
+export CFD_NOTIFY_CONTROL=""
 
 ################################## 互助码填法示例 ##################################
 ## **互助码是填在My系列变量中的，ForOther系统变量中只要填入My系列的变量名即可，按注释中的例子拼接，以东东农场为例，如下所示。**
