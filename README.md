@@ -43,6 +43,7 @@
     
   + 京东APP扫码获取cookie(执行`node getJDCookie.js`即可)
 
+## 通知频道[https://t.me/jdfruit](https://t.me/jdfruit)
 
 ## 赞赏码(开发维护不易,请赏杯茶水费)
 
