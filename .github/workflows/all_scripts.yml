@@ -20,14 +20,22 @@ jobs:
         with:
           persist-credentials: false
 
-#      - name: lxk0301-🔄自动同步🔄
-#        uses: repo-sync/github-sync@v2
-#        if: env.PAT
-#        with:
-#          source_repo: "https://gitee.com/lxk0301/jd_scripts.git"
-#          source_branch: "master"
-#          destination_branch: "lxk0301"
-#          github_token: ${{ github.event.client_payload.PAT || secrets.PAT }}
+      - name: lxk0301-🔄自动同步🔄
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://gitee.com/lxk0301/jd_docker.git"
+          source_branch: "master"
+          destination_branch: "lxk0301"
+          github_token: ${{ github.event.client_payload.PAT || secrets.PAT }}
+      - name: dockere_jd-🔄自动同步🔄
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/dockere/jd-base.git"
+          source_branch: "master"
+          destination_branch: "lxk0301"
+          github_token: ${{ github.event.client_payload.PAT || secrets.PAT }}
       - name: ziye11-🔄自动同步🔄
         uses: repo-sync/github-sync@v2
         if: env.PAT
