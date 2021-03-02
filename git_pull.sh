@@ -37,7 +37,7 @@ function Update_Cron {
     #git_pull随机cron
     perl -i -pe "s|.+(bash git_pull.+)|${RanMin} ${H} \* \* \* sleep ${RanSleep} && \1|" ${ListCron}
     #美丽研究院分随机cron
-    perl -i -pe "s|1 7,12(.+jd_beauty\W*.*)|${RanSleep} 7,12\1|" ${ListCron}
+    perl -i -pe "s|1 7,12(.+jd_beauty\W*.*)|${ranH} 7,12\1|" ${ListCron}
     crontab ${ListCron}
   fi
 }
