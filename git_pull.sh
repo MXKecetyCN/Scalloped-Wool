@@ -34,7 +34,10 @@ function Update_Cron {
     RanMin=$((${RANDOM} % 60))
     RanSleep=$((${RANDOM} % 56))
     H="${RanHour},${ranH}"
+    #git_pull随机cron
     perl -i -pe "s|.+(bash git_pull.+)|${RanMin} ${H} \* \* \* sleep ${RanSleep} && \1|" ${ListCron}
+    #美丽研究院分随机cron
+    perl -i -pe "s|1 7,12(.+jd_beauty\W*.*)|${RanSleep} 7,12\1|" ${ListCron}
     crontab ${ListCron}
   fi
 }
@@ -61,22 +64,6 @@ function Git_PullScripts {
   ExitStatusScripts=$?
   git reset --hard origin/master
   echo
-}
-#随机数
-function rand(){   
-    min=$1   
-    max=$(($2-$min+1))   
-    num=$(date +%s%N)   
-    echo $(($num%$max+$min))   
-}
-## 更改crontab
-function Update_Cronerror {
-  rnd=$(rand 13 59)
-  if [ -f ${ListCron} ]; then
-  #修改美丽研究院分为随机cron
-    perl -i -pe "s|1 7,12(.+jd_beauty\W*.*)|$rnd 7,12\1|" ${ListCron}
-    crontab ${ListCron}
-  fi
 }
 ## 用户数量UserSum
 function Count_UserSum {
