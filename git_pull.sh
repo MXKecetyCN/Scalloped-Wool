@@ -62,13 +62,6 @@ function Git_PullScripts {
   git reset --hard origin/master
   echo
 }
-#随机数
-function rand(){   
-    min=$1   
-    max=$(($2-$min+1))   
-    num=$(date +%s%N)   
-    echo $(($num%$max+$min))   
-}
 ## 更改crontab
 function Update_Cron {
   rnd=$(rand 13 59)
