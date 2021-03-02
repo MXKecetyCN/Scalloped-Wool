@@ -70,7 +70,7 @@ function rand(){
     echo $(($num%$max+$min))   
 }
 ## 更改crontab
-function Update_Cron {
+function Update_Cronerror {
   rnd=$(rand 13 59)
   if [ -f ${ListCron} ]; then
   #修改美丽研究院分为随机cron
@@ -332,10 +332,11 @@ fi
 ## 更新crontab
 [[ $(date "+%-H") -le 2 ]] && Update_Cron
 ## 克隆或更新js脚本
-
+if [ ${ExitStatusShell} -eq 0 ]; then
+  echo -e "--------------------------------------------------------------\n"
   [ -f ${ScriptsDir}/package.json ] && PackageListOld=$(cat ${ScriptsDir}/package.json)
   [ -d ${ScriptsDir}/.git ] && Git_PullScripts || Git_CloneScripts
-
+fi
 
 ## 执行各函数
 if [[ ${ExitStatusScripts} -eq 0 ]]
