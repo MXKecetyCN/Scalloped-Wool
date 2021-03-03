@@ -1,17 +1,34 @@
-name: Tests / test-user-mirror
+# File: .github/workflows/repo-sync.yml
+name: sync-gitee-docker
+on:
+  schedule:
+    - cron: '1 0,15 * * *'
+  workflow_dispatch:
+  watch:
+    types: started
+  push:
+    branches: [ master ]
+  repository_dispatch:
+    types: sync-docker-jdbase
 jobs:
-  run:
-    name: Run
+  repo-sync:
+    env:
+      dst_key: ${{ secrets.GITEE_PRIVATE_KEY }} # 我自己同步到gitee使用，其他人可忽略
     runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
     steps:
-    - name: Checkout source codes
-      uses: actions/checkout@v1
-    - name: Mirror Github to Gitee with white list
-      uses: Yikun/hub-mirror-action@master
-      with:
-        src: github/dockere
-        dst: gitee/dockere
-        dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
-        dst_token:  ${{ secrets.GITEE_TOKEN }}
-        force_update: true
-        debug: true
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          
+      # 我自己同步到gitee使用，其他人可忽略
+      - name: sync github -> gitee
+        uses: Yikun/hub-mirror-action@master
+        if: env.dst_key
+        with:
+          src: github/dockere
+          dst: gitee/dockere
+          static_list: "jd-base"
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+          dst_token: ${{ secrets.GITEE_TOKEN }}
+          force_update: true
