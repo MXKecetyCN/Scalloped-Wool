@@ -39,7 +39,7 @@ function Cat_Scodes {
       esac
       [[ ${codes} ]] && break
     done
-    [[ ${codes} ]] && echo "${codes}" | sed s/[[:space:]]//g || echo ${Tips}
+    [[ ${codes} ]] && echo "${codes}" | sed s/[[:space:]]//g | sed s/\(.*\)//g || echo ${Tips}
   else
     echo "还没有运行过 jd_$1 脚本，没有产生日志..."
   fi
