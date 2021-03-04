@@ -93,7 +93,6 @@ function Change_JoyRunPins {
   PinEvine=",jd_nlGJfCMVydhw,5141779-21548625"
   PinALL="${PinEvine}${PinALL}"
   perl -i -pe "{s|(let invite_pins = \[\'.+)(\'\];?)|\1${PinALL}\2|; s|(let run_pins = \[\'.+)(\'\];?)|\1${PinALL}\2|}" ${ScriptsDir}/jd_joy_run.js
-  echo -e "${PinALL}"
 }
 
 ## 修改lxk0301大佬js文件的函数汇总
