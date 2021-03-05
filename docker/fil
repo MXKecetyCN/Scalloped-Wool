@@ -46,4 +46,4 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && chmod 777 /usr/local/bin/docker-entrypoint.sh \
     && rm -rf /root/.npm
 WORKDIR ${JD_DIR}
-ENTRYPOINT docker-entrypoint.sh
+ENTRYPOINT ["docker-entrypoint.sh"]
