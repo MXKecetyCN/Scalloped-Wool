@@ -96,13 +96,12 @@ function Change_JoyRunPins {
 }
 
 ## 修改lxk0301大佬js文件的函数汇总
-## 加密故失效
 function Change_ALL {
   if [ -f ${FileConf} ]; then
     . ${FileConf}
     if [ -n "${Cookie1}" ]; then
       Count_UserSum
-#      Change_JoyRunPins
+#     Change_JoyRunPins
     fi
   fi
 }
