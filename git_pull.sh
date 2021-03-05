@@ -79,7 +79,7 @@ function Count_UserSum {
 }
 
 ## 把config.sh中提供的所有账户的PIN附加在jd_joy_run.js中，让各账户相互进行宠汪汪赛跑助力
-## 优先跑lxk大佬的PIN,然后互助自己的，然后我的
+## 加密故失效
 function Change_JoyRunPins {
   j=${UserSum}
   PinALL=""
@@ -89,21 +89,20 @@ function Change_JoyRunPins {
     CookieTemp=${!Tmp}
     PinTemp=$(echo ${CookieTemp} | perl -pe "{s|.*pt_pin=(.+);|\1|; s|%|\\\x|g}")
     PinTempFormat=$(printf ${PinTemp})
-    PinALL=",${PinTempFormat}${PinALL}"
+    PinALL="${PinTempFormat},${PinALL}"
     let j--
   done
-  PinEvine=",jd_nlGJfCMVydhw,5141779-21548625"
-  PinALL="${PinEvine}${PinALL}"
-  perl -i -pe "{s|(let invite_pins = \[\'.+)(\'\];?)|\1${PinALL}\2|; s|(let run_pins = \[\'.+)(\'\];?)|\1${PinALL}\2|}" ${ScriptsDir}/jd_joy_run.js
+  perl -i -pe "{s|(let invite_pins = \[\')(.+\'\];?)|\1${PinALL}\2|; s|(let run_pins = \[\')(.+\'\];?)|\1${PinALL}\2|}" ${ScriptsDir}/jd_joy_run.js
 }
 
 ## 修改lxk0301大佬js文件的函数汇总
+## 加密故失效
 function Change_ALL {
   if [ -f ${FileConf} ]; then
     . ${FileConf}
     if [ -n "${Cookie1}" ]; then
       Count_UserSum
-      Change_JoyRunPins
+#      Change_JoyRunPins
     fi
   fi
 }
