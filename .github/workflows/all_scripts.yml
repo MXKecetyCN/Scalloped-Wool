@@ -36,14 +36,14 @@ jobs:
           source_branch: "master"
           destination_branch: "lxk0301"
           github_token: ${{ github.event.client_payload.PAT || secrets.PAT }}
-      - name: ziye11-🔄自动同步🔄
-        uses: repo-sync/github-sync@v2
-        if: env.PAT
-        with:
-          source_repo: "https://github.com/ziye11/JavaScript.git"
-          source_branch: "main"
-          destination_branch: "ziye66666"
-          github_token: ${{ github.event.client_payload.PAT || secrets.PAT }}
+#      - name: ziye11-🔄自动同步🔄
+#        uses: repo-sync/github-sync@v2
+#        if: env.PAT
+#        with:
+#          source_repo: "https://github.com/ziye11/JavaScript.git"
+#          source_branch: "main"
+#          destination_branch: "ziye66666"
+#          github_token: ${{ github.event.client_payload.PAT || secrets.PAT }}
       - name: ZhiYi-N-🔄自动同步🔄
         uses: repo-sync/github-sync@v2
         if: env.PAT
