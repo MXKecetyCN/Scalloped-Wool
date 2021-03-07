@@ -52,6 +52,14 @@ jobs:
           source_branch: "master"
           destination_branch: "ZhiYi-N"
           github_token: ${{ github.event.client_payload.PAT || secrets.PAT }}
+      - name: FeiZhao-🔄自动同步🔄
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/age174/-.git"
+          source_branch: "main"
+          destination_branch: "FeiZhao"
+          github_token: ${{ github.event.client_payload.PAT || secrets.PAT }}
       - name: xmly_speed-🔄自动同步🔄
         uses: repo-sync/github-sync@v2
         if: env.PAT
