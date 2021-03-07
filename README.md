@@ -10,7 +10,7 @@
 	--name jd \
 	--hostname jd \
 	--restart always \
-	nevinee/jd:gitee
+	noobx/jd:gitee
 ```
 ### 如需指定目录，请把$PWD更改为指定目录即可，不然则为当前目录！
 执行上面命令之后建议执行'docker logs -f jd'查看安装进度，直到出现Welcome to Node.js v1x.x.0.代表成功！
