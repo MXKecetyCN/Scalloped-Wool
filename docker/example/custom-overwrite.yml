@@ -55,6 +55,6 @@ jd_scripts:
     #是否开启debug模式打印日志
     # 例: JD_DEBUG=false
     - JD_DEBUG=
-    #使用自定义定任务追加默认任务之后，上面volumes挂载之后这里配置对应的文件名，和自定义文件使用方式为overwrite
+    #使用自定义定任务覆盖默认任务，上面volumes挂载之后这里配置对应的文件名，和自定义文件使用方式为overwrite
     - CUSTOM_LIST_FILE=my_crontab_list.sh
     - CUSTOM_LIST_MERGE_TYPE=overwrite
