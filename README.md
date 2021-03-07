@@ -1,4 +1,4 @@
-# Evine大佬回归，请大家使用evinedeng/nodejs镜像重新安装
+# Evine大佬回归，请大家使用evinedeng/nodejs:latest镜像重新安装
 如果您是第一次安装，请等待1-2分钟后执行：docker exec -it jd bash git_pull，如你是旁路由,请更换网络模式添加--network host \,食用方法.！↓：
  ```
  docker run -dit \
