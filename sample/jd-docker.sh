@@ -17,7 +17,7 @@ echo "
                                                                      
                      ==== Create by 老竭力 ====                                 
 "
-DOCKER_IMG_NAME="noobx/jd"
+DOCKER_IMG_NAME="nevinee/jd"
 JD_PATH=""
 SHELL_FOLDER=$(pwd)
 CONTAINER_NAME=""
