@@ -1,4 +1,4 @@
-# Evine大佬回归，请大家使用evinedeng/nodejs:latest镜像重新安装
+# jd-base
 如果您是第一次安装，请等待1-2分钟后执行：docker exec -it jd bash git_pull，如你是旁路由,请更换网络模式添加--network host \,食用方法.！↓：
  ```
  docker run -dit \
@@ -10,7 +10,7 @@
 	--name jd \
 	--hostname jd \
 	--restart always \
-	evinedeng/nodejs:latest
+	noobx/jd:gitee
 ```
 ### 如需指定目录，请把$PWD更改为指定目录即可，不然则为当前目录！
 执行上面命令之后建议执行'docker logs -f jd'查看安装进度，直到出现Welcome to Node.js v1x.x.0.代表成功！
