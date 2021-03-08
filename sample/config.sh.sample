@@ -365,6 +365,25 @@ ForOtherJdcfd3=""
 ForOtherJdcfd4=""
 ForOtherJdcfd5=""
 ForOtherJdcfd6=""
+
+
+################################## 定义环球挑战赛互助（选填） ##################################
+## 具体填法及要求详见本文件最下方“互助码填法示例”
+MyGlobal1=""
+MyGlobal2=""
+MyGlobal3=""
+MyGlobal4=""
+MyGlobal5=""
+MyGlobal6=""
+MyGlobalA=""
+MyGlobalB=""
+
+ForOtherGlobal1=""
+ForOtherGlobal2=""
+ForOtherGlobal3=""
+ForOtherGlobal4=""
+ForOtherGlobal5=""
+ForOtherGlobal6=""
 ################################## 定义东东超市蓝币兑换数量（选填） ##################################
 ## 东东超市蓝币兑换，可用值包括：
 ## 一、0：表示不兑换京豆，这也是js脚本的默认值
