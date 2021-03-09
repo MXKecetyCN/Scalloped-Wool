@@ -52,7 +52,7 @@ exportSharecode(){
     
         allSharecode=$(echo ${allSharecode} | awk '{print substr($1,2)}')
     
-        echo "${1}:${allSharecode}"
+        # echo "${1}:${allSharecode}"
     
         export ${3}=${allSharecode}
         
