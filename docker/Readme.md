@@ -2,9 +2,9 @@
 ### Usage
 ```diff
 + 2021-03-9更新 新版docker但容器多账号自动互助
-开启方式：docker-compose.yml 中添加环境变量 - ENABLE_AUTO_HELP=true 
-助力原则：不考虑需要被助力次数与提供助力次数  假设有3个账号，则生成： ”助力码1@助力码2@助力码3&助力码1@助力码2@助力码3&助力码1@助力码2@助力码3“
-原理说明：1、定时调用 /scripts/docker/auto_help.sh collect 收集各个活动的助力码，整理、去重、排序、保存到 /scripts/logs/sharecodeCollection.log;
++开启方式：docker-compose.yml 中添加环境变量 - ENABLE_AUTO_HELP=true 
++助力原则：不考虑需要被助力次数与提供助力次数  假设有3个账号，则生成： ”助力码1@助力码2@助力码3&助力码1@助力码2@助力码3&助力码1@助力码2@助力码3“
++原理说明：1、定时调用 /scripts/docker/auto_help.sh collect 收集各个活动的助力码，整理、去重、排序、保存到 /scripts/logs/sharecodeCollection.log;
         2、（由于linux进程限制，父进程无法获取子进程环境变量）在每次脚本运行前，在当前进程先调用 /scripts/docker/auto_help.sh export 把助力码注入到环境变量
 
 + 2021-02-21更新 https://gitee.com/lxk0301/jd_scripts仓库被迫私有，老用户重新更新一下镜像：https://hub.docker.com/r/lxk0301/jd_scripts)(docker-compose.yml的REPO_URL记得修改)后续可同步更新jd_script仓库最新脚本
