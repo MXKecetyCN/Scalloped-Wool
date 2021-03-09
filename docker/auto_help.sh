@@ -35,7 +35,6 @@ collectSharecode(){
 # 导出助力码
 exportSharecode(){
     if [ -f ${logFile} ]; then
-        echo "${1}：导出助力码"
         #账号数
         cookiecount=$(echo ${JD_COOKIE} | awk -F '&' '{print NF}')
         # 单个账号助力码
@@ -53,8 +52,14 @@ exportSharecode(){
         allSharecode=$(echo ${allSharecode} | awk '{print substr($1,2)}')
     
         # echo "${1}:${allSharecode}"
-    
-        export ${3}=${allSharecode}
+
+        #判断合成的助力码长度是否大于账号数，不大于，则可知没有助力码
+        if [ ${#allSharecode} -gt ${cookiecount} ]; then
+            echo "${1}：导出助力码"
+            export ${3}=${allSharecode}
+        else
+            echo "${1}：没有助力码，不导出"
+        fi
         
     else
         echo "${1}：${logFile} 不存在，不导出助力码"
