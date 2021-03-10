@@ -55,11 +55,11 @@ exportSharecode(){
 
         #判断合成的助力码长度是否大于账号数，不大于，则可知没有助力码
         if [ ${#allSharecode} -gt ${cookiecount} ]; then
-            echo "${1}：导出助力码"
+            echo "${1}：注入环境变量"
             echo "${1}:${allSharecode}"
             export ${3}=${allSharecode}
         else
-            echo "${1}：没有助力码，不导出"
+            echo "没有${1}：不注入环境变量"
         fi
         
     else
