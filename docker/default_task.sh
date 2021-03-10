@@ -110,16 +110,27 @@ echo -e "\n# 必须要的默认定时任务请勿删除" >> $mergedListFile
 echo -e "${random_m} ${random_h} * * * docker_entrypoint.sh >> /scripts/logs/default_task.log 2>&1" | tee -a $mergedListFile
 
 
-echo "第7步增加 |ts 任务日志输出时间戳..."
+echo "第7步 自动助力"
+if [ $ENABLE_AUTO_HELP = "true" ]; then
+    echo "开启自动助力"
+    
+    #在所有脚本执行前，先执行助力码导出
+    sed -i 's/node/ . \/scripts\/docker\/auto_help.sh export \&\& node /g' ${mergedListFile}
+else
+    echo "未开启自动助力"
+fi
+
+
+echo "第8步增加 |ts 任务日志输出时间戳..."
 sed -i "/\( ts\| |ts\|| ts\)/!s/>>/\|ts >>/g" $mergedListFile
 
-echo "第8步执行proc_file.sh脚本任务..."
+echo "第9步执行proc_file.sh脚本任务..."
 sh -x /scripts/docker/proc_file.sh
 
-echo "第9步加载最新的定时任务文件..."
+echo "第10步加载最新的定时任务文件..."
 crontab $mergedListFile
 
-echo "第10步将仓库的docker_entrypoint.sh脚本更新至系统/usr/local/bin/docker_entrypoint.sh内..."
+echo "第11步将仓库的docker_entrypoint.sh脚本更新至系统/usr/local/bin/docker_entrypoint.sh内..."
 cat /scripts/docker/docker_entrypoint.sh >/usr/local/bin/docker_entrypoint.sh
 
 echo "发送通知"
