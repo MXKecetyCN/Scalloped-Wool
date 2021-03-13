@@ -36,7 +36,9 @@ collectSharecode(){
 exportSharecode(){
     if [ -f ${logFile} ]; then
         #账号数
-        cookiecount=$(echo ${JD_COOKIE} | awk -F '&' '{print NF}')
+        cookiecount=$(echo ${JD_COOKIE} | grep -o pt_key |  grep -c pt_key)
+        echo "cookie个数：${cookiecount}"
+
         # 单个账号助力码
         singleSharecode=$(sed -n '/'${1}'.*/'p ${logFile} | awk '{print $4}' | awk '{T=T"@"$1} END {print T}' |  awk '{print substr($1,2)}')
 #        | awk '{print $2,$4}' | sort -g | uniq
