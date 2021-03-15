@@ -569,6 +569,9 @@ export JOY_RUN_HELP_MYSELF=""
 ## 如需使用，请自行解除下一行的注释
 # export TG_PROXY_PORT=""
 
+## Telegram api自建的反向代理地址，例子：反向代理地址 http://aaa.bbb.ccc 则填写 aaa.bbb.ccc，教程：https://www.hostloc.com/thread-805441-1-1.html
+## 如需使用，请自行解除下注释
+# export TG_API_HOST=""
 
 ################################## 是否添加DIY脚本（选填） ##################################
 ## 如果你自己会写shell脚本，并且希望在每次git_pull.sh这个脚本运行时，额外运行你的DIY脚本，请赋值为 "true"
