@@ -1,6 +1,6 @@
-## Version: v3.30.6
-## Date: 2021-3-8
-## Update Content:京小兑控制变量，宠汪汪自己内部账户互助变量,环球挑战赛互助变量
+## Version: v3.31.6
+## Date: 2021-3-20
+## Update Content:增加城城领现金互助变量， 新增领现金,京东赚赚node端通知控制环境变量，更新一些注释说明!
 
 ## 上面版本号中，如果第2位数字有变化，那么代表增加了新的参数，如果只有第3位数字有变化，仅代表更新了注释，没有增加新的参数，可更新可不更新
 ## 如需更新，请参考（https://github.com/dockere/jd-base）。
@@ -94,19 +94,19 @@ RandomDelay="300"
 ## 1. ServerChan，教程：http://sc.ftqq.com/3.version
 export PUSH_KEY=""
 
-## 2. BARK，教程（看BARK_PUSH和BARK_SOUND的说明）：https://gitee.com/lxk0301/jd_scripts/blob/master/githubAction.md
+## 2. BARK，教程（看BARK_PUSH和BARK_SOUND的说明）：https://gitee.com/lxk0301/jd_docker/blob/master/githubAction.md#%E4%B8%8B%E6%96%B9%E6%8F%90%E4%BE%9B%E4%BD%BF%E7%94%A8%E5%88%B0%E7%9A%84-secrets%E5%85%A8%E9%9B%86%E5%90%88
 export BARK_PUSH=""
 export BARK_SOUND=""
 
-## 3. Telegram，如需使用，TG_BOT_TOKEN和TG_USER_ID必须同时赋值，教程：https://gitee.com/lxk0301/jd_scripts/blob/master/backUp/TG_PUSH.md
+## 3. Telegram，如需使用，TG_BOT_TOKEN和TG_USER_ID必须同时赋值，教程：https://gitee.com/lxk0301/jd_docker/blob/master/backUp/TG_PUSH.md
 export TG_BOT_TOKEN=""
 export TG_USER_ID=""
 
-## 4. 钉钉，教程（看DD_BOT_TOKEN和DD_BOT_SECRET部分）：https://gitee.com/lxk0301/jd_scripts/blob/master/githubAction.md
+## 4. 钉钉，教程（看DD_BOT_TOKEN和DD_BOT_SECRET部分）：https://gitee.com/lxk0301/jd_docker/blob/master/githubAction.md#%E4%B8%8B%E6%96%B9%E6%8F%90%E4%BE%9B%E4%BD%BF%E7%94%A8%E5%88%B0%E7%9A%84-secrets%E5%85%A8%E9%9B%86%E5%90%88
 export DD_BOT_TOKEN=""
 export DD_BOT_SECRET=""
 
-## 5. iGot聚合推送，支持多方式推送，填写iGot的推送key。教程：https://gitee.com/lxk0301/jd_scripts/blob/master/githubAction.md
+## 5. iGot聚合推送，支持多方式推送，填写iGot的推送key。教程：https://wahao.github.io/Bark-MP-helper/#/
 export IGOT_PUSH_KEY=""
 
 ## 6. Push Plus，微信扫码登录后一对一推送或一对多推送，参考文档：http://pushplus.hxtrip.com/
@@ -384,6 +384,27 @@ ForOtherGlobal3=""
 ForOtherGlobal4=""
 ForOtherGlobal5=""
 ForOtherGlobal6=""
+
+
+################################## 定义城城领现金互助（选填） ##################################
+## 具体填法及要求详见本文件最下方“互助码填法示例”
+MyCity1=""
+MyCity2=""
+MyCity3=""
+MyCity4=""
+MyCity5=""
+MyCity6=""
+MyCityA=""
+MyCityB=""
+
+ForOtherCity1=""
+ForOtherCity2=""
+ForOtherCity3=""
+ForOtherCity4=""
+ForOtherCity5=""
+ForOtherCity6=""
+
+
 ################################## 定义东东超市蓝币兑换数量（选填） ##################################
 ## 东东超市蓝币兑换，可用值包括：
 ## 一、0：表示不兑换京豆，这也是js脚本的默认值
@@ -431,6 +452,9 @@ export FRUIT_NOTIFY_CONTROL=""
 ## 如需切换为换豆（不浇水），请修改为 "true"
 export FRUIT_BEAN_CARD=""
 
+################################## 定义jd_necklace是否是否静默运行 ##################################
+## 控制点点券是否静默运行，false 为否(默认值false，发送推送通知消息)，true 为是(即：不发送推送通知消息)
+export DDQ_NOTIFY_CONTROL=""
 
 ################################## 定义宠汪汪喂食克数（选填） ##################################
 ## 你期望的宠汪汪每次喂食克数，只能填入10、20、40、80，默认为10
@@ -554,6 +578,9 @@ export CFD_NOTIFY_CONTROL=""
 ## 输入true为自动兑换,不填则为不兑换
 export JD_JXD_EXCHANGE=""
 
+################################## 定义jd_jdzz是否是否静默运行 ##################################
+## 控制京东赚赚是否静默运行，false 为否(默认值false，发送推送通知消息)，默认每月1日推送一次通知，true 为是(即：不发送推送通知消息)，
+export JDZZ_NOTIFY_CONTROL=""
 
 ################################## 定义宠汪汪是否开启内部互助,（选填） ##################################
 ## 输入true为开启内部互助,不填默认关闭
