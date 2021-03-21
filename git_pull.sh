@@ -26,19 +26,22 @@ ShellURL=https://gitee.com/dockere/jd-base
 DockerURL=https://gitee.com/lxk0301/jd_docker
 
 ## 更新crontab，gitee服务器同一时间限制5个链接，因此每个人更新代码必须错开时间，每次执行git_pull随机生成。
-## 每天只更新两次,(分.时.延迟)为随机cron
+## 每天次数随机，更新时间随机，更新秒数随机，至少6次，至多12次，大部分为8-10次，符合正态分布。
 function Update_Cron {
-  if [ -f ${ListCron} ]; then
-    RanHour=$(((RANDOM % 6)+7))
-    ranH=$(((RANDOM % 6)+14))
+  if [[ $(date "+%-H") -le 2 ]] && [ -f ${ListCron} ]; then
     RanMin=$((${RANDOM} % 60))
     RanSleep=$((${RANDOM} % 56))
-    H="${RanHour},${ranH}"
-    #git_pull随机cron
-    perl -i -pe "s|.+(bash git_pull.+)|${RanMin} ${H} \* \* \* sleep ${RanSleep} && \1|" ${ListCron}
-    #perl -i -pe "s|1 7,12(.+jd_beauty\W*.*)|${ranH} 7,12\1|" ${ListCron}
-    #修复joy_run错误cron
-    perl -i -pe "s|18 11,14(.+jd_joy_run\W*.*)|${RanHour} 9-20/2\1|" ${ListCron}
+    RanHourArray[0]=$((${RANDOM} % 3))
+    for ((i=1; i<14; i++)); do
+      j=$(($i - 1))
+      tmp=$((${RANDOM} % 3 + ${RanHourArray[j]} + 2))
+      [[ ${tmp} -lt 24 ]] && RanHourArray[i]=${tmp} || break
+    done
+    RanHour=${RanHourArray[0]}
+    for ((i=1; i<${#RanHourArray[*]}; i++)); do
+      RanHour="${RanHour},${RanHourArray[i]}"
+    done
+    perl -i -pe "s|.+(bash.+git_pull.+log.*)|${RanMin} ${RanHour} \* \* \* sleep ${RanSleep} && \1|" ${ListCron}
     crontab ${ListCron}
   fi
 }
