@@ -795,7 +795,7 @@ def get_jd_cookie(update, context):
     qr_code_path = genQRCode()
     photo_file = open(qr_code_path, 'rb')
     photo_message = context.bot.send_photo(chat_id=update.effective_chat.id, photo=photo_file,
-                                           caption="请使用京东APP扫描二维码获取Cookie")
+                                           caption="请使用京东APP扫描二维码获取Cookie(二维码有效期：3分钟)")
     photo_file.close()
 
     return_msg = chekLogin()
@@ -951,6 +951,38 @@ def parseJDCookies(headers):
     jd_cookie = f'pt_key={pt_key};pt_pin={pt_pin};'
 
 
+def saveFile(update, context):
+    from_user_id = update.message.from_user.id
+    if admin_id == str(from_user_id):
+        js_file_name = update.message.document.file_name
+        if str(js_file_name).endswith(".js"):
+            save_path = f"{_base_dir}{js_file_name}"
+            try:
+                # logger.info(update.message)
+                file = context.bot.getFile(update.message.document.file_id)
+                file.download(save_path)
+                keyboard_line = [[InlineKeyboardButton('node 执行', callback_data='node %s ' % save_path),
+                                  InlineKeyboardButton('spnode 执行',
+                                                       callback_data='spnode %s' % save_path)],
+                                 [InlineKeyboardButton('取消操作', callback_data='cancel')]]
+
+                reply_markup = InlineKeyboardMarkup(keyboard_line)
+
+                update.message.reply_text(
+                    text='```{}```'.format(
+                        helpers.escape_markdown(' ↓↓↓ %s 上传至/scripts完成，请请选择需要的操作 ↓↓↓ ' % js_file_name)),
+                    reply_markup=reply_markup, parse_mode=ParseMode.MARKDOWN_V2)
+
+            except Exception as e:
+                update.message.reply_text(text='```{}```'.format(
+                    helpers.escape_markdown(" →→→ %s js上传至/scripts过程中出错，请重新尝试。 ←←← " % js_file_name)),
+                    parse_mode=ParseMode.MARKDOWN_V2)
+        else:
+            update.message.reply_text(text='```{}```'.format(
+                helpers.escape_markdown(" →→→ 抱歉，暂时只开放上传js文件至/scripts目录 ←←← ")),
+                parse_mode=ParseMode.MARKDOWN_V2)
+
+
 def unknown(update, context):
     """回复用户输入不存在的指令
     """
@@ -1054,6 +1086,9 @@ def main():
 
     # 通过 get_jd_cookie 函数 响应 '/eikooc_dj_teg' 命令 #别问为啥这么写，有意为之的
     dp.add_handler(CommandHandler('eikooc_dj_teg', get_jd_cookie))
+
+    # 文件监听
+    dp.add_handler(MessageHandler(Filters.document, saveFile))
 
     # 没找到对应指令
     dp.add_handler(MessageHandler(Filters.command, unknown))
