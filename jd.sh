@@ -114,8 +114,6 @@ function Combin_All {
   export JDCFD_SHARECODES=$(Combin_Sub ForOtherJdcfd "401DA52935EB84F3BDAC92C458E6B530888E1FAA1E33AF78C5315A97994F6CE6")
   #环球挑战赛(jd_global.js)
   export JDGLOBAL_SHARECODES=$(Combin_Sub ForOtherGlobal "OTZwWkM3VnZUZlMxNko4Y1NxWjMwQXBReG1kbVFsV0JFKzNDZEIveXMvVT0=@U3Q4ZUgzalZMQjI5UitibjNNc0hidz09@TkFDcUEzQzZuMnpHYlArOElxVWFSUT09")
-  #城城领现金(jd_city.js)
-  export CITY_SHARECODES=$(Combin_Sub ForOtherCity)
 }
 
 ## 转换JD_BEAN_SIGN_STOP_NOTIFY或JD_BEAN_SIGN_NOTIFY_SIMPLE

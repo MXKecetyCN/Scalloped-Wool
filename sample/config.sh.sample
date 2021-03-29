@@ -1,13 +1,13 @@
-## Version: v3.31.6
-## Date: 2021-3-20
-## Update Content:增加城城领现金互助变量， 新增领现金,京东赚赚node端通知控制环境变量，更新一些注释说明!
+## Version: v3.32.0
+## Date: 2021-03-30
+## Update Content:去除过期活动变量；更新镜像，如无法拉取脚本，请重新拉取镜像。>>https://github.com/dockere/jd-base
 
 ## 上面版本号中，如果第2位数字有变化，那么代表增加了新的参数，如果只有第3位数字有变化，仅代表更新了注释，没有增加新的参数，可更新可不更新
 ## 如需更新，请参考（https://github.com/dockere/jd-base）。
 
 ################################## 说明 ##################################
-## 以下配置中，带有 export 申明的，均由LXK9301大佬定义，详见：https://gitee.com/lxk0301/jd_scripts/blob/master/githubAction.md
-## 其他互助码，考虑到直接按LXK9301大佬定义的变量去填的话，一是不方便记忆，二是容易搞混，所以最终的变量将由脚本去组合，你只要按注释去填即可
+## 以下配置中，带有 export 申明的，均由lxk0301大佬定义，详见：https://gitee.com/lxk0301/jd_docker/blob/master/githubAction.md
+## 其他互助码，考虑到直接按lxk0301大佬定义的变量去填的话，一是不方便记忆，二是容易搞混，所以最终的变量将由脚本去组合，你只要按注释去填即可
 ## 除此之外，还额外增加了是否自动删除失效任务AutoDelCron、是否自动增加新任务AutoAddCron、删除旧日志时间RmLogDaysAgo、随机延迟启动任务RandomDelay、是否添加自定义脚本EnableExtraShell五个人性化的设置供选择
 ## 所有赋值等号两边不能有空格，所有的值请一律在两侧添加半角的双引号，如果变量值中含有双引号，则外侧改为一对半角的单引号。
 ## 所有的赋值都可以参考 “定义东东萌宠是否静默运行” 部分，在不同时间设置不同的值，以达到你想要的效果，具体判断条件如下：
@@ -22,7 +22,7 @@
 ################################## 定义Cookie（必填） ##################################
 ## 请依次填入每个用户的Cookie，Cookie的具体形式（只有pt_key字段和pt_pin字段，没有其他字段）：pt_key=xxxxxxxxxx;pt_pin=xxxx;
 ## 1. 如果是通过控制面板编辑本文件，点击页面上方“扫码获取Cookie”即可获取，此方式获取的Cookie有效期为3个月
-## 2. 还可以通过浏览器开发工具获取，此方式获得的Cookie只有1个月有效期，教程：https://github.com/LXK9301/jd_scripts/wiki/GetCookies
+## 2. 还可以通过浏览器开发工具获取，此方式获得的Cookie只有1个月有效期，教程：https://gitee.com/lxk0301/jd_docker/blob/master/backUp/GetJdCookie.md
 ## 必须按数字顺序1、2、3、4...依次编号下去，例子只有6个，超出6个你继续往下编号即可
 ## 不允许有汉字，如果ID有汉字，请在PC浏览器上获取Cookie，会自动将汉字转换为URL编码
 Cookie1=""
@@ -55,7 +55,7 @@ TempBlockCookie=""
 
 ################################## 定义是否自动删除失效的脚本与定时任务（选填） ##################################
 ## 有的时候，某些JS脚本只在特定的时间有效，过了时间就失效了，需要自动删除失效的本地定时任务，则设置为 "true" ，否则请设置为 "false"
-## 检测文件：LXK9301/jd_scripts 仓库中的 docker/crontab_list.sh，和 shylocks/Loon 仓库中的 docker/crontab_list.sh
+## 检测文件：lxk0301/jd_scripts 仓库中的 docker/crontab_list.sh，和 shylocks/Loon 仓库中的 docker/crontab_list.sh
 ## 当设置为 "true" 时，会自动从检测文件中读取比对删除的任务（识别以“jd_”、“jr_”、“jx_”开头的任务）
 ## 当设置为 "true" 时，脚本只会删除一整行失效的定时任务，不会修改其他现有任务，所以任何时候，你都可以自己调整你的crontab.list
 ## 当设置为 "true" 时，如果你有添加额外脚本是以“jd_”“jr_”“jx_”开头的，如检测文件中，会被删除，不是以“jd_”“jr_”“jx_”开头的任务则不受影响
@@ -63,8 +63,8 @@ AutoDelCron="true"
 
 
 ################################## 定义是否自动增加新的本地定时任务（选填） ##################################
-## LXK9301 大佬会在有需要的时候，增加定时任务，如需要本地自动增加新的定时任务，则设置为 "true" ，否则请设置为 "false"
-## 检测文件：LXK9301/jd_scripts 仓库中的 docker/crontab_list.sh，和 shylocks/Loon 仓库中的 docker/crontab_list.sh
+## lxk0301 大佬会在有需要的时候，增加定时任务，如需要本地自动增加新的定时任务，则设置为 "true" ，否则请设置为 "false"
+## 检测文件：lxk0301/jd_scripts 仓库中的 docker/crontab_list.sh，和 shylocks/Loon 仓库中的 docker/crontab_list.sh
 ## 当设置为 "true" 时，如果检测到检测文件中有增加新的定时任务，那么在本地也增加（识别以“jd_”、“jr_”、“jx_”开头的任务）
 ## 当设置为 "true" 时，会自动从检测文件新增加的任务中读取时间，该时间为北京时间
 ## 当设置为 "true" 时，脚本只会增加新的定时任务，不会修改其他现有任务，所以任何时候，你都可以自己调整你的crontab.list
@@ -82,9 +82,27 @@ RmLogDaysAgo="7"
 ## 在crontab.list中，除掉每小时上述时间启动的任务外，其他任务在你定义了 RandomDelay 的情况下，一律启用随机延迟，但如果你按照Wiki教程给某些任务添加了 "now"，那么这些任务也将无视随机延迟直接启动
 RandomDelay="300"
 
+################################## 定义每日签到的通知形式（选填） ##################################
+## js脚本每日签到提供3种通知方式，分别为：
+## 关闭通知，那么请在下方填入0
+## 简洁通知，那么请在下方填入1，其效果见：https://github.com/lxk0301/jd_scripts/blob/master/icon/bean_sign_simple.jpg
+## 原始通知，那么请在下方填入2，如果不填也默认为2，内容比较长，这也是默认通知方式
+NotifyBeanSign=""
+
+################################## 定义取关参数（选填） ##################################
+## jd_unsubscribe这个任务是用来取关每天做任务关注的商品和店铺，默认在每次运行时取关20个商品和20个店铺
+## 如果取关数量不够，可以根据情况增加，还可以设置 jdUnsubscribeStopGoods 和 jdUnsubscribeStopShop 
+## 商品取关数量
+goodPageSize=""
+## 店铺取关数量
+shopPageSize=""
+## 遇到此商品不再取关此商品以及它后面的商品，需去商品详情页长按拷贝商品信息
+jdUnsubscribeStopGoods=""
+## 遇到此店铺不再取关此店铺以及它后面的店铺，请从头开始输入店铺名称
+jdUnsubscribeStopShop=""
 
 ################################## 定义User-Agent（选填） ##################################
-## 自定义LXK9301大佬仓库里京东系列js脚本的User-Agent，不懂不知不会User-Agent的请不要随意填写内容，随意填写了出错概不负责
+## 自定义lxk0301大佬仓库里京东系列js脚本的User-Agent，不懂不知不会User-Agent的请不要随意填写内容，随意填写了出错概不负责
 ## 如需使用，请自行解除下一行注释
 # export JD_USER_AGENT=""
 
@@ -122,14 +140,6 @@ export QYWX_KEY=""
 export QYWX_AM=""
 
 
-################################## 定义每日签到的通知形式（选填） ##################################
-## js脚本每日签到提供3种通知方式，分别为：
-## 关闭通知，那么请在下方填入0
-## 简洁通知，那么请在下方填入1，其效果见：https://github.com/LXK9301/jd_scripts/blob/master/icon/bean_sign_simple.jpg
-## 原始通知，那么请在下方填入2，如果不填也默认为2，内容比较长，这也是默认通知方式
-NotifyBeanSign=""
-
-
 ################################## 定义每日签到每个接口间的延迟时间（选填） ##################################
 ## 默认每个签到接口并发无延迟，如需要依次进行每个接口，请自定义延迟时间，单位为毫秒，延迟作用于每个签到接口, 如填入延迟则切换顺序签到(耗时较长)
 export JD_BEAN_STOP=""
@@ -139,133 +149,77 @@ export JD_BEAN_STOP=""
 ## 具体填法及要求详见本文件最下方“互助码填法示例”
 MyFruit1=""
 MyFruit2=""
-MyFruit3=""
-MyFruit4=""
-MyFruit5=""
-MyFruit6=""
 MyFruitA=""
 MyFruitB=""
 
 ForOtherFruit1=""
 ForOtherFruit2=""
-ForOtherFruit3=""
-ForOtherFruit4=""
-ForOtherFruit5=""
-ForOtherFruit6=""
 
 
 ################################## 定义东东萌宠互助（选填） ##################################
 ## 具体填法及要求详见本文件最下方“互助码填法示例”
 MyPet1=""
 MyPet2=""
-MyPet3=""
-MyPet4=""
-MyPet5=""
-MyPet6=""
 MyPetA=""
 MyPetB=""
 
 ForOtherPet1=""
 ForOtherPet2=""
-ForOtherPet3=""
-ForOtherPet4=""
-ForOtherPet5=""
-ForOtherPet6=""
 
 
 ################################## 定义种豆得豆互助（选填） ##################################
 ## 具体填法及要求详见本文件最下方“互助码填法示例”
 MyBean1=""
 MyBean2=""
-MyBean3=""
-MyBean4=""
-MyBean5=""
-MyBean6=""
 MyBeanA=""
 MyBeanB=""
 
 ForOtherBean1=""
 ForOtherBean2=""
-ForOtherBean3=""
-ForOtherBean4=""
-ForOtherBean5=""
-ForOtherBean6=""
 
 
 ################################## 定义京喜工厂互助（选填） ##################################
 ## 具体填法及要求详见本文件最下方“互助码填法示例”
 MyDreamFactory1=""
 MyDreamFactory2=""
-MyDreamFactory3=""
-MyDreamFactory4=""
-MyDreamFactory5=""
-MyDreamFactory6=""
 MyDreamFactoryA=""
 MyDreamFactoryB=""
 
 ForOtherDreamFactory1=""
 ForOtherDreamFactory2=""
-ForOtherDreamFactory3=""
-ForOtherDreamFactory4=""
-ForOtherDreamFactory5=""
-ForOtherDreamFactory6=""
 
 
 ################################## 定义东东工厂互助（选填） ##################################
 ## 具体填法及要求详见本文件最下方“互助码填法示例”
 MyJdFactory1=""
 MyJdFactory2=""
-MyJdFactory3=""
-MyJdFactory4=""
-MyJdFactory5=""
-MyJdFactory6=""
 MyJdFactoryA=""
 MyJdFactoryB=""
 
 ForOtherJdFactory1=""
 ForOtherJdFactory2=""
-ForOtherJdFactory3=""
-ForOtherJdFactory4=""
-ForOtherJdFactory5=""
-ForOtherJdFactory6=""
 
 
 ################################## 定义京东赚赚互助（选填） ##################################
 ## 具体填法及要求详见本文件最下方“互助码填法示例”
 MyJdzz1=""
 MyJdzz2=""
-MyJdzz3=""
-MyJdzz4=""
-MyJdzz5=""
-MyJdzz6=""
 MyJdzzA=""
 MyJdzzB=""
 
 ForOtherJdzz1=""
 ForOtherJdzz2=""
-ForOtherJdzz3=""
-ForOtherJdzz4=""
-ForOtherJdzz5=""
-ForOtherJdzz6=""
 
 
 ################################## 定义疯狂的JOY互助（选填） ##################################
 ## 具体填法及要求详见本文件最下方“互助码填法示例”
 MyJoy1=""
 MyJoy2=""
-MyJoy3=""
-MyJoy4=""
-MyJoy5=""
-MyJoy6=""
 MyJoyA=""
 MyJoyB=""
 
 ForOtherJoy1=""
 ForOtherJoy2=""
-ForOtherJoy3=""
-ForOtherJoy4=""
-ForOtherJoy5=""
-ForOtherJoy6=""
 
 
 ################################## 定义京喜农场互助（选填） ##################################
@@ -276,133 +230,66 @@ ForOtherJoy6=""
 ## 注意：京喜农场 种植种子发生变化的时候，互助码也会变！！
 MyJxnc1=''
 MyJxnc2=''
-MyJxnc3=''
-MyJxnc4=''
-MyJxnc5=''
-MyJxnc6=''
 MyJxncA=''
 MyJxncB=''
 
 ForOtherJxnc1=""
 ForOtherJxnc2=""
-ForOtherJxnc3=""
-ForOtherJxnc4=""
-ForOtherJxnc5=""
-ForOtherJxnc6=""
 
 
 ################################## 定义口袋书店互助（选填） ##################################
 ## 具体填法及要求详见本文件最下方“互助码填法示例”
 MyBookShop1=""
 MyBookShop2=""
-MyBookShop3=""
-MyBookShop4=""
-MyBookShop5=""
-MyBookShop6=""
 MyBookShopA=""
 MyBookShopB=""
 
 ForOtherBookShop1=""
 ForOtherBookShop2=""
-ForOtherBookShop3=""
-ForOtherBookShop4=""
-ForOtherBookShop5=""
-ForOtherBookShop6=""
 
 
 ################################## 定义签到领现金互助（选填） ##################################
 ## 具体填法及要求详见本文件最下方“互助码填法示例”
 MyCash1=""
 MyCash2=""
-MyCash3=""
-MyCash4=""
-MyCash5=""
-MyCash6=""
 MyCashA=""
 MyCashB=""
 
 ForOtherCash1=""
 ForOtherCash2=""
-ForOtherCash3=""
-ForOtherCash4=""
-ForOtherCash5=""
-ForOtherCash6=""
 
 
 ################################## 定义闪购盲盒互助（选填） ##################################
 ## 具体填法及要求详见本文件最下方“互助码填法示例”
 MySgmh1=""
 MySgmh2=""
-MySgmh3=""
-MySgmh4=""
-MySgmh5=""
-MySgmh6=""
 MySgmhA=""
 MySgmhB=""
 
 ForOtherSgmh1=""
 ForOtherSgmh2=""
-ForOtherSgmh3=""
-ForOtherSgmh4=""
-ForOtherSgmh5=""
-ForOtherSgmh6=""
 
 
 ################################## 定义惊喜财富岛互助（选填） ##################################
 ## 具体填法及要求详见本文件最下方“互助码填法示例”
 MyJdcfd1=""
 MyJdcfd2=""
-MyJdcfd3=""
-MyJdcfd4=""
-MyJdcfd5=""
-MyJdcfd6=""
 MyJdcfdA=""
 MyJdcfdB=""
 
 ForOtherJdcfd1=""
 ForOtherJdcfd2=""
-ForOtherJdcfd3=""
-ForOtherJdcfd4=""
-ForOtherJdcfd5=""
-ForOtherJdcfd6=""
 
 
 ################################## 定义环球挑战赛互助（选填） ##################################
 ## 具体填法及要求详见本文件最下方“互助码填法示例”
 MyGlobal1=""
 MyGlobal2=""
-MyGlobal3=""
-MyGlobal4=""
-MyGlobal5=""
-MyGlobal6=""
 MyGlobalA=""
 MyGlobalB=""
 
 ForOtherGlobal1=""
 ForOtherGlobal2=""
-ForOtherGlobal3=""
-ForOtherGlobal4=""
-ForOtherGlobal5=""
-ForOtherGlobal6=""
-
-
-################################## 定义城城领现金互助（选填） ##################################
-## 具体填法及要求详见本文件最下方“互助码填法示例”
-MyCity1=""
-MyCity2=""
-MyCity3=""
-MyCity4=""
-MyCity5=""
-MyCity6=""
-MyCityA=""
-MyCityB=""
-
-ForOtherCity1=""
-ForOtherCity2=""
-ForOtherCity3=""
-ForOtherCity4=""
-ForOtherCity5=""
-ForOtherCity6=""
 
 
 ################################## 定义东东超市蓝币兑换数量（选填） ##################################
@@ -541,25 +428,14 @@ export FACTORAY_WANTPRODUCT_NAME=""
 export JXNC_NOTIFY_LEVEL="3"
 
 
-################################## 定义取关参数（选填） ##################################
-## jd_unsubscribe这个任务是用来取关每天做任务关注的商品和店铺，默认在每次运行时取关20个商品和20个店铺
-## 如果取关数量不够，可以根据情况增加，还可以设置 jdUnsubscribeStopGoods 和 jdUnsubscribeStopShop 
-## 商品取关数量
-goodPageSize=""
-## 店铺取关数量
-shopPageSize=""
-## 遇到此商品不再取关此商品以及它后面的商品，需去商品详情页长按拷贝商品信息
-jdUnsubscribeStopGoods=""
-## 遇到此店铺不再取关此店铺以及它后面的店铺，请从头开始输入店铺名称
-jdUnsubscribeStopShop=""
-
-
 ################################## 疯狂的JOY（选填） ##################################
 ## 疯狂的JOY循环助力，"true" 表示循环助力，"false" 表示不循环助力，默认 "false"
 export JDJOY_HELPSELF=""
 
+
 ## 疯狂的JOY京豆兑换，目前最小值为500/1000京豆，默认为 "0" 不开启京豆兑换
 export JDJOY_APPLYJDBEAN=""
+
 
 ## 疯狂的JOY自动购买什么等级的JOY，如需要使用请自行解除注释
 # export BUY_JOY_LEVEL=""
@@ -568,6 +444,7 @@ export JDJOY_APPLYJDBEAN=""
 ################################## 定义是否自动加购物车（选填） ##################################
 ## 口袋书店和东东小窝有些任务需要将商品加进购物车才能完成，默认 "false" 不做这些任务，如想做，请设置为 "true"
 export PURCHASE_SHOPS=""
+
 
 ################################## 定义京喜财富岛通知（选填） ##################################
 ## 输入true为通知,默认 "false",不填则为不通知
@@ -578,30 +455,30 @@ export CFD_NOTIFY_CONTROL=""
 ## 输入true为自动兑换,不填则为不兑换
 export JD_JXD_EXCHANGE=""
 
+
 ################################## 定义jd_jdzz是否是否静默运行 ##################################
 ## 控制京东赚赚是否静默运行，false 为否(默认值false，发送推送通知消息)，默认每月1日推送一次通知，true 为是(即：不发送推送通知消息)，
 export JDZZ_NOTIFY_CONTROL=""
+
 
 ################################## 定义宠汪汪是否开启内部互助,（选填） ##################################
 ## 输入true为开启内部互助,不填默认关闭
 export JOY_RUN_HELP_MYSELF=""
 
-################################## 定义城城领现金是否自动抽奖（选填） ##################################
-## 非必填，建议活动快结束开启，默认关闭，true开启
-export JD_CITY_EXCHANGE=""
 
 ################################## Telegram 代理（选填） ##################################
 ## Telegram 代理的 IP，代理类型为 http，比如你代理是 http://127.0.0.1:1080，则填写 "127.0.0.1"
+## 依次为代理IP-代理端口-代理的认证参数
 ## 如需使用，请自行解除下一行的注释
 # export TG_PROXY_HOST=""
-
-## Telegram 代理的端口，代理类型为 http，比如你代理是 http://127.0.0.1:1080，则填写 "1080"
-## 如需使用，请自行解除下一行的注释
 # export TG_PROXY_PORT=""
+# export TG_PROXY_AUTH=""
+
 
 ## Telegram api自建的反向代理地址，例子：反向代理地址 http://aaa.bbb.ccc 则填写 aaa.bbb.ccc，教程：https://www.hostloc.com/thread-805441-1-1.html
 ## 如需使用，请自行解除下注释
 # export TG_API_HOST=""
+
 
 ################################## 是否添加DIY脚本（选填） ##################################
 ## 如果你自己会写shell脚本，并且希望在每次git_pull.sh这个脚本运行时，额外运行你的DIY脚本，请赋值为 "true"
