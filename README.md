@@ -44,7 +44,7 @@ noobx/jd:gitee
 ```
 noobx/jd:py
 ```
-# 你要知道的命令↓
+# 命令↓
 1. 手动 git pull 更新脚本
 ```shell
 docker exec -it jd bash git_pull
@@ -86,7 +86,7 @@ docker exec -it jd pm2 monit`或`docker exec -it jd pm2 logs
 ```
 docker restart jd
 ```
-11. 如何自动更新容器！
+11. 如何自动更新镜像！
 ```
 docker run -d \
     --name watchtower \
