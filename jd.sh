@@ -112,8 +112,9 @@ function Combin_All {
   export JDSGMH_SHARECODES=$(Combin_Sub ForOtherSgmh "T022u_x3QRke_EnVIR_wnPEIcQCjVQmoaT5kRrbA@T0205KkcHkJujwKkXXy9wK9NCjVQmoaT5kRrbA@T012a1zrlZeWI-dHCjVQmoaT5kRrbA")
   #惊喜财富岛(jd_cfd.js)
   export JDCFD_SHARECODES=$(Combin_Sub ForOtherJdcfd "401DA52935EB84F3BDAC92C458E6B530888E1FAA1E33AF78C5315A97994F6CE6")
-  #环球挑战赛(jd_global.js)
-  export JDGLOBAL_SHARECODES=$(Combin_Sub ForOtherGlobal "OTZwWkM3VnZUZlMxNko4Y1NxWjMwQXBReG1kbVFsV0JFKzNDZEIveXMvVT0=@U3Q4ZUgzalZMQjI5UitibjNNc0hidz09@TkFDcUEzQzZuMnpHYlArOElxVWFSUT09")
+  #京东手机狂欢城(jd_carnivalcity.js)
+  export JD818_SHARECODES=$(Combin_Sub ForOtherJd818 "61fd0394-a2a6-4fc6-bd17-b7c7b47128ab@d5d113cf-a3f4-4c5a-a55b-6510b31ae8d9@1c18b57a-9425-4ed5-81f4-0373a50cfba4")
+  
 }
 
 ## 转换JD_BEAN_SIGN_STOP_NOTIFY或JD_BEAN_SIGN_NOTIFY_SIMPLE
