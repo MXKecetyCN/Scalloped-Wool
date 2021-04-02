@@ -32,7 +32,7 @@
 
 ### 1. Docker
 
-- [部署方法](./docker)
+- [部署方法](./docker/Readme.md)
 
 - [环境变量集合](./githubAction.md)
  
