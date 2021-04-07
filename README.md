@@ -48,4 +48,4 @@
 
 ## 赞赏码(开发维护不易,请赏杯茶水费)
 
-<div align=center><img width="250" height="250" src="./icon/thanks.jpg"/></div>
+<div align=center><img width="250" height="250" src="https://cdn.jsdelivr.net/gh/gitupdate/friendPin@main/thanks.jpg"/></div>
