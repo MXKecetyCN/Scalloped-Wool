@@ -113,7 +113,7 @@ function Combin_All {
   #惊喜财富岛(jd_cfd.js)
   export JDCFD_SHARECODES=$(Combin_Sub ForOtherJdcfd "401DA52935EB84F3BDAC92C458E6B530888E1FAA1E33AF78C5315A97994F6CE6")
   #京东手机狂欢城(jd_carnivalcity.js)
-  export JD818_SHARECODES=$(Combin_Sub ForOtherCarni "5fe3095e-be27-4e17-bf8a-e3eafcb778ec@25486f1e-32e3-4ecb-ba47-26156b4a34e3@2fab5484-701c-4b18-affa-4feee645c999")
+  export JD818_SHARECODES=$(Combin_Sub ForOtherCarni "ec656690-9665-47d7-988a-52a4318caaa6@f11e26bf-15ea-4611-9523-50beaaf5e584@ef7ec2d6-dbd4-4b57-83b2-71a8307d104a")
   
 }
 
