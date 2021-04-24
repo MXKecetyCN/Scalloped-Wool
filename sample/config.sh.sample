@@ -1,6 +1,6 @@
-## Version: v3.34.2
-## Date: 2021-04-22
-## Update Content: 增加健康社区互助，去除手机狂欢城互助。（上次更新：更新镜像，如无法拉取脚本，请重新拉取镜像。>>https://github.com/dockere/jd-base）
+## Version: v3.34.3
+## Date: 2021-04-24
+## Update Content: 温馨提示:由于lxk重新建库导致仓库更新失败,需要删掉映射出来的scripts文件夹，重新更新。。（上次更新：更新镜像，如无法拉取脚本，请重新拉取镜像。>>https://github.com/dockere/jd-base）
 
 ## 上面版本号中，如果第2位数字有变化，那么代表增加了新的参数，如果只有第3位数字有变化，仅代表更新了注释，没有增加新的参数，可更新可不更新
 ## 如需更新，请参考（https://github.com/dockere/jd-base）。
